@@ -446,47 +446,46 @@ _PyObject_IsFreed(PyObject *op)
     return freed;
 }
 
-
 /* For debugging convenience.  See Misc/gdbinit for some useful gdb hooks */
 void
 _PyObject_Dump(PyObject* op)
 {
-    if (op == NULL) {
-        fprintf(stderr, "<NULL object>\n");
-        fflush(stderr);
-        return;
-    }
+    // if (op == NULL) {
+    //     fprintf(stderr, "<NULL object>\n");
+    //     fflush(stderr);
+    //     return;
+    // }
 
-    if (_PyObject_IsFreed(op)) {
-        /* It seems like the object memory has been freed:
-           don't access it to prevent a segmentation fault. */
-        fprintf(stderr, "<freed object>\n");
-        return;
-    }
+    // if (_PyObject_IsFreed(op)) {
+    //     /* It seems like the object memory has been freed:
+    //        don't access it to prevent a segmentation fault. */
+    //     fprintf(stderr, "<freed object>\n");
+    //     return;
+    // }
 
-    PyGILState_STATE gil;
-    PyObject *error_type, *error_value, *error_traceback;
+    // PyGILState_STATE gil;
+    // PyObject *error_type, *error_value, *error_traceback;
 
-    fprintf(stderr, "object  : ");
-    fflush(stderr);
-    gil = PyGILState_Ensure();
+    // fprintf(stderr, "object  : ");
+    // fflush(stderr);
+    // gil = PyGILState_Ensure();
 
-    PyErr_Fetch(&error_type, &error_value, &error_traceback);
-    (void)PyObject_Print(op, stderr, 0);
-    fflush(stderr);
-    PyErr_Restore(error_type, error_value, error_traceback);
+    // PyErr_Fetch(&error_type, &error_value, &error_traceback);
+    // (void)PyObject_Print(op, stderr, 0);
+    // fflush(stderr);
+    // PyErr_Restore(error_type, error_value, error_traceback);
 
-    PyGILState_Release(gil);
-    /* XXX(twouters) cast refcount to long until %zd is
-       universally available */
-    fprintf(stderr, "\n"
-        "type    : %s\n"
-        "refcount: %ld\n"
-        "address : %p\n",
-        Py_TYPE(op)==NULL ? "NULL" : Py_TYPE(op)->tp_name,
-        (long)op->ob_refcnt,
-        op);
-    fflush(stderr);
+    // PyGILState_Release(gil);
+    // /* XXX(twouters) cast refcount to long until %zd is
+    //    universally available */
+    // fprintf(stderr, "\n"
+    //     "type    : %s\n"
+    //     "refcount: %ld\n"
+    //     "address : %p\n",
+    //     Py_TYPE(op)==NULL ? "NULL" : Py_TYPE(op)->tp_name,
+    //     (long)op->ob_refcnt,
+    //     op);
+    // fflush(stderr);
 }
 
 PyObject *

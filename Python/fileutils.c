@@ -1470,7 +1470,8 @@ _Py_wrealpath(const wchar_t *path,
         errno = EINVAL;
         return NULL;
     }
-    res = realpath(cpath, cresolved_path);
+    memcpy(cresolved_path, cpath, strlen(cpath));
+    //res = realpath(cpath, cresolved_path);
     PyMem_Free(cpath);
     if (res == NULL)
         return NULL;

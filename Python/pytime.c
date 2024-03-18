@@ -664,6 +664,8 @@ _PyTime_GetSystemClockWithInfo(_PyTime_t *t, _Py_clock_info_t *info)
     return pygettimeofday(t, info, 1);
 }
 
+extern int sysGetCurrentTime(int64_t*, int64_t*);
+
 static int
 pymonotonic(_PyTime_t *tp, _Py_clock_info_t *info, int raise)
 {
@@ -727,15 +729,26 @@ pymonotonic(_PyTime_t *tp, _Py_clock_info_t *info, int raise)
         info->adjustable = 0;
     }
 
+#elif defined(__lv2ppu__)
+
+    int64_t sec, nsec;
+    sysGetCurrentTime(&sec, &nsec);
+
+    *tp = nsec;
+
+    if (info) {
+        info->implementation = "sysGetCurrentTime";
+    }
+
 #else
     struct timespec ts;
-#ifdef CLOCK_HIGHRES
-    const clockid_t clk_id = CLOCK_HIGHRES;
-    const char *implementation = "clock_gettime(CLOCK_HIGHRES)";
-#else
-    const clockid_t clk_id = CLOCK_MONOTONIC;
-    const char *implementation = "clock_gettime(CLOCK_MONOTONIC)";
-#endif
+    #ifdef CLOCK_HIGHRES
+        const clockid_t clk_id = CLOCK_HIGHRES;
+        const char *implementation = "clock_gettime(CLOCK_HIGHRES)";
+    #else
+        const clockid_t clk_id = CLOCK_MONOTONIC;
+        const char *implementation = "clock_gettime(CLOCK_MONOTONIC)";
+    #endif
 
     assert(info == NULL || raise);
 

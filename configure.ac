@@ -373,6 +373,9 @@ then
 	*-*-linux-android*)
 		ac_sys_system=Linux-android
 		;;
+	*-*ps3*)
+		ac_sys_system=PS3
+		;;
 	*-*-linux*)
 		ac_sys_system=Linux
 		;;
@@ -380,9 +383,6 @@ then
 		ac_sys_system=Cygwin
 		;;
 	*)
-		# for now, limit cross builds to known configurations
-		MACHDEP="unknown"
-		AC_MSG_ERROR([cross build not supported for $host])
 	esac
 	ac_sys_release=
     else
@@ -425,9 +425,6 @@ if test "$cross_compiling" = yes; then
 		_host_cpu=
 		;;
 	*)
-		# for now, limit cross builds to known configurations
-		MACHDEP="unknown"
-		AC_MSG_ERROR([cross build not supported for $host])
 	esac
 	_PYTHON_HOST_PLATFORM="$MACHDEP${_host_cpu:+-$_host_cpu}"
 fi

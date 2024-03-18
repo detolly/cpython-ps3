@@ -145,4 +145,12 @@
 #include "fileutils.h"
 #include "pyfpe.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-function"
+static int fileno(void* stream)
+{
+    return 0;
+}
+#pragma GCC diagnostic pop
+
 #endif /* !Py_PYTHON_H */
