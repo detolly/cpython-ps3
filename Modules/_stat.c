@@ -244,6 +244,8 @@ typedef unsigned short mode_t;
 #  define SF_SNAPSHOT 0x00200000
 #endif
 
+typedef int mode_t;
+
 static mode_t
 _PyLong_AsMode_t(PyObject *op)
 {
@@ -278,9 +280,9 @@ stat_S_ISFUNC(S_ISDIR,
     "S_ISDIR(mode) -> bool\n\n"
     "Return True if mode is from a directory.");
 
-stat_S_ISFUNC(S_ISCHR,
-    "S_ISCHR(mode) -> bool\n\n"
-    "Return True if mode is from a character special device file.");
+// stat_S_ISFUNC(S_ISCHR,
+//     "S_ISCHR(mode) -> bool\n\n"
+//     "Return True if mode is from a character special device file.");
 
 stat_S_ISFUNC(S_ISBLK,
     "S_ISBLK(mode) -> bool\n\n"
@@ -352,7 +354,7 @@ filetype(mode_t mode)
     if (S_ISLNK(mode))  return 'l';
     /* special files */
     if (S_ISBLK(mode))  return 'b';
-    if (S_ISCHR(mode))  return 'c';
+    // if (S_ISCHR(mode))  return 'c';
     if (S_ISFIFO(mode)) return 'p';
     if (S_ISSOCK(mode)) return 's';
     /* non-standard types */
@@ -410,7 +412,7 @@ stat_filemode(PyObject *self, PyObject *omode)
 
 static PyMethodDef stat_methods[] = {
     {"S_ISDIR",         stat_S_ISDIR,  METH_O, stat_S_ISDIR_doc},
-    {"S_ISCHR",         stat_S_ISCHR,  METH_O, stat_S_ISCHR_doc},
+    // {"S_ISCHR",         stat_S_ISCHR,  METH_O, stat_S_ISCHR_doc},
     {"S_ISBLK",         stat_S_ISBLK,  METH_O, stat_S_ISBLK_doc},
     {"S_ISREG",         stat_S_ISREG,  METH_O, stat_S_ISREG_doc},
     {"S_ISFIFO",        stat_S_ISFIFO, METH_O, stat_S_ISFIFO_doc},
@@ -513,7 +515,7 @@ PyInit__stat(void)
         return NULL;
 
     if (PyModule_AddIntMacro(m, S_IFDIR)) return NULL;
-    if (PyModule_AddIntMacro(m, S_IFCHR)) return NULL;
+    // if (PyModule_AddIntMacro(m, S_IFCHR)) return NULL;
     if (PyModule_AddIntMacro(m, S_IFBLK)) return NULL;
     if (PyModule_AddIntMacro(m, S_IFREG)) return NULL;
     if (PyModule_AddIntMacro(m, S_IFIFO)) return NULL;

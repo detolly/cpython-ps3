@@ -2,13 +2,13 @@
 #ifndef Py_PYTIME_H
 #define Py_PYTIME_H
 
+#include <sys/types.h>
+
 #include "pyconfig.h" /* include for defines */
 #include "object.h"
 
-/**************************************************************************
-Symbols and macros to supply platform-independent interfaces to time related
-functions and constants
-**************************************************************************/
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif

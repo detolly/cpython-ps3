@@ -8,7 +8,7 @@
 #include <Python.h>
 #include "structmember.h"
 #include "osdefs.h"
-
+#include <sys/errno.h>
 
 /* Compatibility aliases */
 PyObject *PyExc_EnvironmentError = NULL;

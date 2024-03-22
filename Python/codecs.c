@@ -1136,7 +1136,7 @@ PyCodec_SurrogatePassErrors(PyObject *exc)
     PyObject *encode;
     char *encoding;
     int code;
-    int bytelength;
+    int bytelength = 0;
     Py_ssize_t i;
     Py_ssize_t start;
     Py_ssize_t end;

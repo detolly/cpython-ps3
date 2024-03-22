@@ -186,7 +186,7 @@ Changes in 1.2.6 (29 Jan 2012)
 - Fix bug when compiling minizip with C++ [Vollant]
 - Protect for long name and extra fields in contrib/minizip [Vollant]
 - Avoid some warnings in contrib/minizip [Vollant]
-- Add -I../.. -L../.. to CFLAGS for minizip and miniunzip
+- Add -I/home/thomas/Code/crackman/crackman/lib/cpython./.. -L../.. to CFLAGS for minizip and miniunzip
 - Add missing libs to minizip linker command
 - Add support for VPATH builds in contrib/minizip
 - Add an --enable-demos option to contrib/minizip/configure

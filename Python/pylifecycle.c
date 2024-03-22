@@ -190,37 +190,37 @@ add_flag(int flag, const char *envs)
     return flag;
 }
 
-static char*
-get_codec_name(const char *encoding)
-{
-    char *name_utf8, *name_str;
-    PyObject *codec, *name = NULL;
+// static char*
+// get_codec_name(const char *encoding)
+// {
+//     char *name_utf8, *name_str;
+//     PyObject *codec, *name = NULL;
 
-    codec = _PyCodec_Lookup(encoding);
-    if (!codec)
-        goto error;
+//     codec = _PyCodec_Lookup(encoding);
+//     if (!codec)
+//         goto error;
 
-    name = _PyObject_GetAttrId(codec, &PyId_name);
-    Py_CLEAR(codec);
-    if (!name)
-        goto error;
+//     name = _PyObject_GetAttrId(codec, &PyId_name);
+//     Py_CLEAR(codec);
+//     if (!name)
+//         goto error;
 
-    name_utf8 = PyUnicode_AsUTF8(name);
-    if (name_utf8 == NULL)
-        goto error;
-    name_str = _PyMem_RawStrdup(name_utf8);
-    Py_DECREF(name);
-    if (name_str == NULL) {
-        PyErr_NoMemory();
-        return NULL;
-    }
-    return name_str;
+//     name_utf8 = PyUnicode_AsUTF8(name);
+//     if (name_utf8 == NULL)
+//         goto error;
+//     name_str = _PyMem_RawStrdup(name_utf8);
+//     Py_DECREF(name);
+//     if (name_str == NULL) {
+//         PyErr_NoMemory();
+//         return NULL;
+//     }
+//     return name_str;
 
-error:
-    Py_XDECREF(codec);
-    Py_XDECREF(name);
-    return NULL;
-}
+// error:
+//     Py_XDECREF(codec);
+//     Py_XDECREF(name);
+//     return NULL;
+// }
 
 static char*
 get_locale_encoding(void)
@@ -1051,18 +1051,19 @@ is_valid_fd(int fd)
     struct stat st;
     return (fstat(fd, &st) == 0);
 #else
-    int fd2;
-    if (fd < 0)
-        return 0;
-    _Py_BEGIN_SUPPRESS_IPH
-    /* Prefer dup() over fstat(). fstat() can require input/output whereas
-       dup() doesn't, there is a low risk of EMFILE/ENFILE at Python
-       startup. */
-    fd2 = dup(fd);
-    if (fd2 >= 0)
-        close(fd2);
-    _Py_END_SUPPRESS_IPH
-    return fd2 >= 0;
+    return 1;
+    // int fd2;
+    // if (fd < 0)
+    //     return 0;
+    // _Py_BEGIN_SUPPRESS_IPH
+    // /* Prefer dup() over fstat(). fstat() can require input/output whereas
+    //    dup() doesn't, there is a low risk of EMFILE/ENFILE at Python
+    //    startup. */
+    // fd2 = dup(fd);
+    // if (fd2 >= 0)
+    //     close(fd2);
+    // _Py_END_SUPPRESS_IPH
+    // return fd2 >= 0;
 #endif
 }
 
@@ -1424,7 +1425,7 @@ Py_FatalError(const char *msg)
 
     /* Check if the current thread has a Python thread state
        and holds the GIL */
-    PyThreadState *tss_tstate = PyGILState_GetThisThreadState();
+    PyThreadState *tss_tstate = NULL; //PyGILState_GetThisThreadState();
     if (tss_tstate != NULL) {
         PyThreadState *tstate = PyThreadState_GET();
         if (tss_tstate != tstate) {
@@ -1577,7 +1578,7 @@ initsigs(void)
 #ifdef SIGXFSZ
     PyOS_setsig(SIGXFSZ, SIG_IGN);
 #endif
-    PyOS_InitInterrupts(); /* May imply initsignal() */
+	//PyOS_InitInterrupts(); /* May imply initsignal() */
     if (PyErr_Occurred()) {
         Py_FatalError("Py_Initialize: can't import signal");
     }
@@ -1614,8 +1615,8 @@ _Py_RestoreSignals(void)
 int
 Py_FdIsInteractive(FILE *fp, const char *filename)
 {
-    if (isatty((int)fileno(fp)))
-        return 1;
+    // if (isatty((int)fileno(fp)))
+    //     return 1;
     if (!Py_InteractiveFlag)
         return 0;
     return (filename == NULL) ||
@@ -1653,10 +1654,12 @@ PyOS_getsig(int sig)
         return SIG_ERR;
     }
 #endif /* _MSC_VER && _MSC_VER >= 1400 */
-    handler = signal(sig, SIG_IGN);
-    if (handler != SIG_ERR)
-        signal(sig, handler);
-    return handler;
+    // handler = signal(sig, SIG_IGN);
+    // if (handler != SIG_ERR)
+    //     signal(sig, handler);
+    // return handler;
+    (void)(handler);
+    return NULL;
 #endif
 }
 
@@ -1682,7 +1685,8 @@ PyOS_setsig(int sig, PyOS_sighandler_t handler)
     return ocontext.sa_handler;
 #else
     PyOS_sighandler_t oldhandler;
-    oldhandler = signal(sig, handler);
+    // oldhandler = signal(sig, handler);
+    return NULL;
 #ifdef HAVE_SIGINTERRUPT
     siginterrupt(sig, 1);
 #endif

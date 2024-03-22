@@ -1865,7 +1865,7 @@ typecode_to_mformat_code(char typecode)
 static PyObject *array_new(PyTypeObject *type, PyObject *args, PyObject *kwds);
 
 /*
- * Internal: This function wraps the array constructor--i.e., array_new()--to
+ * Internal: This function wraps the array constructor--I/home/thomas/Code/crackman/crackman/lib/cpythone., array_new()--to
  * allow the creation of array objects from C code without having to deal
  * directly the tuple argument of array_new(). The typecode argument is a
  * Unicode character value, like 'i' or 'f' for example, representing an array

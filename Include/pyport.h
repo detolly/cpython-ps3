@@ -3,6 +3,9 @@
 
 #include "pyconfig.h" /* include for defines */
 
+#include <sys/types.h>
+
+#include <cstddef>
 #include <inttypes.h>
 
 /**************************************************************************

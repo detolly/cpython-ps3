@@ -4,7 +4,9 @@
 #include "Python.h"
 #include "posixmodule.h"
 
+#ifdef __LINUX__
 #include <pwd.h>
+#endif
 
 #include "clinic/pwdmodule.c.h"
 /*[clinic input]
@@ -50,55 +52,60 @@ exception is raised if the entry asked for cannot be found.");
 static int initialized;
 static PyTypeObject StructPwdType;
 
-static void
-sets(PyObject *v, int i, const char* val)
+// static void
+// sets(PyObject *v, int i, const char* val)
+// {
+//   if (val) {
+//       PyObject *o = PyUnicode_DecodeFSDefault(val);
+//       PyStructSequence_SET_ITEM(v, i, o);
+//   }
+//   else {
+//       PyStructSequence_SET_ITEM(v, i, Py_None);
+//       Py_INCREF(Py_None);
+//   }
+// }
+
+struct passwd
 {
-  if (val) {
-      PyObject *o = PyUnicode_DecodeFSDefault(val);
-      PyStructSequence_SET_ITEM(v, i, o);
-  }
-  else {
-      PyStructSequence_SET_ITEM(v, i, Py_None);
-      Py_INCREF(Py_None);
-  }
-}
+
+};
 
 static PyObject *
 mkpwent(struct passwd *p)
 {
-    int setIndex = 0;
-    PyObject *v = PyStructSequence_New(&StructPwdType);
-    if (v == NULL)
+    // int setIndex = 0;
+    // PyObject *v = PyStructSequence_New(&StructPwdType);
+    // if (v == NULL)
         return NULL;
 
-#define SETI(i,val) PyStructSequence_SET_ITEM(v, i, PyLong_FromLong((long) val))
-#define SETS(i,val) sets(v, i, val)
+// #define SETI(i,val) PyStructSequence_SET_ITEM(v, i, PyLong_FromLong((long) val))
+// #define SETS(i,val) sets(v, i, val)
 
-    SETS(setIndex++, p->pw_name);
-#if defined(HAVE_STRUCT_PASSWD_PW_PASSWD) && !defined(__ANDROID__)
-    SETS(setIndex++, p->pw_passwd);
-#else
-    SETS(setIndex++, "");
-#endif
-    PyStructSequence_SET_ITEM(v, setIndex++, _PyLong_FromUid(p->pw_uid));
-    PyStructSequence_SET_ITEM(v, setIndex++, _PyLong_FromGid(p->pw_gid));
-#if defined(HAVE_STRUCT_PASSWD_PW_GECOS)
-    SETS(setIndex++, p->pw_gecos);
-#else
-    SETS(setIndex++, "");
-#endif
-    SETS(setIndex++, p->pw_dir);
-    SETS(setIndex++, p->pw_shell);
+//     SETS(setIndex++, p->pw_name);
+// #if defined(HAVE_STRUCT_PASSWD_PW_PASSWD) && !defined(__ANDROID__)
+//     SETS(setIndex++, p->pw_passwd);
+// #else
+//     SETS(setIndex++, "");
+// #endif
+//     PyStructSequence_SET_ITEM(v, setIndex++, _PyLong_FromUid(p->pw_uid));
+//     PyStructSequence_SET_ITEM(v, setIndex++, _PyLong_FromGid(p->pw_gid));
+// #if defined(HAVE_STRUCT_PASSWD_PW_GECOS)
+//     SETS(setIndex++, p->pw_gecos);
+// #else
+//     SETS(setIndex++, "");
+// #endif
+//     SETS(setIndex++, p->pw_dir);
+//     SETS(setIndex++, p->pw_shell);
 
-#undef SETS
-#undef SETI
+// #undef SETS
+// #undef SETI
 
-    if (PyErr_Occurred()) {
-        Py_XDECREF(v);
-        return NULL;
-    }
+//     if (PyErr_Occurred()) {
+//         Py_XDECREF(v);
+//         return NULL;
+//     }
 
-    return v;
+//     return v;
 }
 
 /*[clinic input]
@@ -116,25 +123,26 @@ static PyObject *
 pwd_getpwuid(PyObject *module, PyObject *uidobj)
 /*[clinic end generated code: output=c4ee1d4d429b86c4 input=ae64d507a1c6d3e8]*/
 {
-    uid_t uid;
-    struct passwd *p;
+    // uid_t uid;
+    // struct passwd *p;
 
-    if (!_Py_Uid_Converter(uidobj, &uid)) {
-        if (PyErr_ExceptionMatches(PyExc_OverflowError))
-            PyErr_Format(PyExc_KeyError,
-                         "getpwuid(): uid not found");
-        return NULL;
-    }
-    if ((p = getpwuid(uid)) == NULL) {
-        PyObject *uid_obj = _PyLong_FromUid(uid);
-        if (uid_obj == NULL)
-            return NULL;
-        PyErr_Format(PyExc_KeyError,
-                     "getpwuid(): uid not found: %S", uid_obj);
-        Py_DECREF(uid_obj);
-        return NULL;
-    }
-    return mkpwent(p);
+    // if (!_Py_Uid_Converter(uidobj, &uid)) {
+    //     if (PyErr_ExceptionMatches(PyExc_OverflowError))
+    //         PyErr_Format(PyExc_KeyError,
+    //                      "getpwuid(): uid not found");
+    //     return NULL;
+    // }
+    // if ((p = getpwuid(uid)) == NULL) {
+    //     PyObject *uid_obj = _PyLong_FromUid(uid);
+    //     if (uid_obj == NULL)
+    //         return NULL;
+    //     PyErr_Format(PyExc_KeyError,
+    //                  "getpwuid(): uid not found: %S", uid_obj);
+    //     Py_DECREF(uid_obj);
+    //     return NULL;
+    // }
+    // return mkpwent(p);
+    return NULL;
 }
 
 /*[clinic input]
@@ -161,11 +169,11 @@ pwd_getpwnam_impl(PyObject *module, PyObject *arg)
     /* check for embedded null bytes */
     if (PyBytes_AsStringAndSize(bytes, &name, NULL) == -1)
         goto out;
-    if ((p = getpwnam(name)) == NULL) {
+    // if ((p = getpwnam(name)) == NULL) {
         PyErr_Format(PyExc_KeyError,
                      "getpwnam(): name not found: %R", arg);
         goto out;
-    }
+    // }
     retval = mkpwent(p);
 out:
     Py_DECREF(bytes);

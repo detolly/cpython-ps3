@@ -2,6 +2,7 @@
 #define Py_PYMATH_H
 
 #include "pyconfig.h" /* include for defines */
+#include <sys/types.h>
 
 /**************************************************************************
 Symbols and macros to supply platform-independent interfaces to mathematical

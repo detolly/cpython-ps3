@@ -1801,6 +1801,9 @@ _imp_extension_suffixes_impl(PyObject *module)
     const char *suffix;
     unsigned int index = 0;
 
+    (void)(suffix);
+    (void)(index);
+
     list = PyList_New(0);
     if (list == NULL)
         return NULL;

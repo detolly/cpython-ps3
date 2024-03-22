@@ -22,11 +22,11 @@ date >> configure.log
 SRCDIR=`dirname $0`
 if test $SRCDIR = "."; then
     ZINC=""
-    ZINCOUT="-I."
+    ZINCOUT="-I/home/thomas/Code/crackman/crackman/lib/cpython"
     SRCDIR=""
 else
     ZINC='-include zconf.h'
-    ZINCOUT='-I. -I$(SRCDIR)'
+    ZINCOUT='-I/home/thomas/Code/crackman/crackman/lib/cpython -I$(SRCDIR)'
     SRCDIR="$SRCDIR/"
 fi
 
@@ -312,7 +312,7 @@ else
              fi
          fi
          if test -n "$ZINC"; then
-             ZINC='-I- -I. -I$(SRCDIR)'
+             ZINC='-I- -I/home/thomas/Code/crackman/crackman/lib/cpython -I$(SRCDIR)'
          fi
          ;;
   SunOS\ 4*) SFLAGS=${CFLAGS-"-O2 -PIC"}

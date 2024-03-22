@@ -2,6 +2,8 @@
 #include "osdefs.h"
 #include <locale.h>
 
+#include <stdint.h>
+
 #ifdef MS_WINDOWS
 #  include <malloc.h>
 #  include <windows.h>
@@ -19,6 +21,8 @@ extern int winerror_to_errno(int);
 #ifdef HAVE_FCNTL_H
 #include <fcntl.h>
 #endif /* HAVE_FCNTL_H */
+
+typedef __SIZE_TYPE__ size_t;
 
 #if defined(__APPLE__) || defined(__ANDROID__)
 extern wchar_t* _Py_DecodeUTF8_surrogateescape(const char *s, Py_ssize_t size);
@@ -44,7 +48,8 @@ _Py_device_encoding(int fd)
 #endif
     int valid;
     _Py_BEGIN_SUPPRESS_IPH
-    valid = isatty(fd);
+    //valid = isatty(fd);
+    valid = 0;
     _Py_END_SUPPRESS_IPH
     if (!valid)
         Py_RETURN_NONE;
@@ -831,15 +836,16 @@ get_inheritable(int fd, int raise)
 
     return (flags & HANDLE_FLAG_INHERIT);
 #else
-    int flags;
+    int flags = 0;
 
-    flags = fcntl(fd, F_GETFD, 0);
-    if (flags == -1) {
-        if (raise)
-            PyErr_SetFromErrno(PyExc_OSError);
-        return -1;
-    }
-    return !(flags & FD_CLOEXEC);
+    // flags = fcntl(fd, F_GETFD, 0);
+    // if (flags == -1) {
+    //     if (raise)
+    //         PyErr_SetFromErrno(PyExc_OSError);
+    //     return -1;
+    // }
+    // return !(flags & FD_CLOEXEC);
+    return flags;
 #endif
 }
 
@@ -866,8 +872,12 @@ set_inheritable(int fd, int inheritable, int raise, int *atomic_flag_works)
     int request;
     int err;
 #endif
-    int flags, new_flags;
-    int res;
+    int flags = 0;
+    int new_flags = 0;
+    int res = 0;
+    (void)(flags);
+    (void)(new_flags);
+    (void)(res);
 #endif
 
     /* atomic_flag_works can only be used to make the file descriptor
@@ -946,31 +956,31 @@ set_inheritable(int fd, int inheritable, int raise, int *atomic_flag_works)
 #endif
 
     /* slow-path: fcntl() requires two syscalls */
-    flags = fcntl(fd, F_GETFD);
-    if (flags < 0) {
-        if (raise)
-            PyErr_SetFromErrno(PyExc_OSError);
-        return -1;
-    }
+    // flags = fcntl(fd, F_GETFD);
+    // if (flags < 0) {
+    //     if (raise)
+    //         PyErr_SetFromErrno(PyExc_OSError);
+    //     return -1;
+    // }
 
-    if (inheritable) {
-        new_flags = flags & ~FD_CLOEXEC;
-    }
-    else {
-        new_flags = flags | FD_CLOEXEC;
-    }
+    // // if (inheritable) {
+    // //     new_flags = flags & ~FD_CLOEXEC;
+    // // }
+    // // else {
+    // //     new_flags = flags | FD_CLOEXEC;
+    // // }
 
-    if (new_flags == flags) {
-        /* FD_CLOEXEC flag already set/cleared: nothing to do */
-        return 0;
-    }
+    // if (new_flags == flags) {
+    //     /* FD_CLOEXEC flag already set/cleared: nothing to do */
+    //     return 0;
+    // }
 
-    res = fcntl(fd, F_SETFD, new_flags);
-    if (res < 0) {
-        if (raise)
-            PyErr_SetFromErrno(PyExc_OSError);
-        return -1;
-    }
+    // res = fcntl(fd, F_SETFD, new_flags);
+    // if (res < 0) {
+    //     if (raise)
+    //         PyErr_SetFromErrno(PyExc_OSError);
+    //     return -1;
+    // }
     return 0;
 #endif
 }
@@ -1491,6 +1501,11 @@ _Py_wrealpath(const wchar_t *path,
 }
 #endif
 
+char *getcwd(char* fname, size_t len)
+{
+    return NULL;
+}
+
 /* Get the current directory. size is the buffer size in wide characters
    including the null character. Decode the path from the locale encoding.
    Return NULL on error. */
@@ -1581,22 +1596,24 @@ _Py_dup(int fd)
     }
 
 #else
-    Py_BEGIN_ALLOW_THREADS
-    _Py_BEGIN_SUPPRESS_IPH
-    fd = dup(fd);
-    _Py_END_SUPPRESS_IPH
-    Py_END_ALLOW_THREADS
-    if (fd < 0) {
-        PyErr_SetFromErrno(PyExc_OSError);
-        return -1;
-    }
+    // Py_BEGIN_ALLOW_THREADS
+    // _Py_BEGIN_SUPPRESS_IPH
+    // fd = dup(fd);
+    // _Py_END_SUPPRESS_IPH
+    // Py_END_ALLOW_THREADS
+    // if (fd < 0) {
+    //     PyErr_SetFromErrno(PyExc_OSError);
+    //     return -1;
+    // }
 
-    if (_Py_set_inheritable(fd, 0, NULL) < 0) {
-        _Py_BEGIN_SUPPRESS_IPH
-        close(fd);
-        _Py_END_SUPPRESS_IPH
-        return -1;
-    }
+    // if (_Py_set_inheritable(fd, 0, NULL) < 0) {
+    //     _Py_BEGIN_SUPPRESS_IPH
+    //     close(fd);
+    //     _Py_END_SUPPRESS_IPH
+    //     return -1;
+    // }
+
+    // return fd;
 #endif
     return fd;
 }
@@ -1608,16 +1625,18 @@ _Py_dup(int fd)
 int
 _Py_get_blocking(int fd)
 {
-    int flags;
-    _Py_BEGIN_SUPPRESS_IPH
-    flags = fcntl(fd, F_GETFL, 0);
-    _Py_END_SUPPRESS_IPH
-    if (flags < 0) {
-        PyErr_SetFromErrno(PyExc_OSError);
-        return -1;
-    }
+    // int flags;
+    // _Py_BEGIN_SUPPRESS_IPH
+    // flags = fcntl(fd, F_GETFL, 0);
+    // _Py_END_SUPPRESS_IPH
+    // if (flags < 0) {
+    //     PyErr_SetFromErrno(PyExc_OSError);
+    //     return -1;
+    // }
 
-    return !(flags & O_NONBLOCK);
+    // return !(flags & O_NONBLOCK);
+
+    return 1;
 }
 
 /* Set the blocking mode of the specified file descriptor.
@@ -1634,24 +1653,26 @@ _Py_set_blocking(int fd, int blocking)
     if (ioctl(fd, FIONBIO, &arg) < 0)
         goto error;
 #else
-    int flags, res;
+    // int flags, res;
 
-    _Py_BEGIN_SUPPRESS_IPH
-    flags = fcntl(fd, F_GETFL, 0);
-    if (flags >= 0) {
-        if (blocking)
-            flags = flags & (~O_NONBLOCK);
-        else
-            flags = flags | O_NONBLOCK;
+    // _Py_BEGIN_SUPPRESS_IPH
+    // flags = fcntl(fd, F_GETFL, 0);
+    // if (flags >= 0) {
+    //     if (blocking)
+    //         flags = flags & (~O_NONBLOCK);
+    //     else
+    //         flags = flags | O_NONBLOCK;
 
-        res = fcntl(fd, F_SETFL, flags);
-    } else {
-        res = -1;
-    }
-    _Py_END_SUPPRESS_IPH
+    //     res = fcntl(fd, F_SETFL, flags);
+    // } else {
+    //     res = -1;
+    // }
+    // _Py_END_SUPPRESS_IPH
 
-    if (res < 0)
-        goto error;
+    // if (res < 0)
+    //     goto error;
+
+    goto error;
 #endif
     return 0;
 

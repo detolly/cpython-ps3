@@ -1276,7 +1276,7 @@ AC_REQUIRE([AM_SET_CURRENT_AUTOMAKE_VERSION])dnl
 AC_REQUIRE([AC_PROG_INSTALL])dnl
 if test "`cd $srcdir && pwd`" != "`pwd`"; then
   # Use -I$(srcdir) only when $(srcdir) != ., so that make's output
-  # is not polluted with repeated "-I."
+  # is not polluted with repeated "-I/home/thomas/Code/crackman/crackman/lib/cpython"
   AC_SUBST([am__isrc], [' -I$(srcdir)'])_AM_SUBST_NOTMAKE([am__isrc])dnl
   # test to see if srcdir already configured
   if test -f $srcdir/config.status; then

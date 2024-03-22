@@ -245,7 +245,7 @@ class Fraction(numbers.Rational):
         # In the event of a tie, the bound with smaller denominator is
         # chosen.  If both denominators are equal (which can happen
         # only when max_denominator == 1 and self is midway between
-        # two integers) the lower bound---i.e., the floor of self, is
+        # two integers) the lower bound---I/home/thomas/Code/crackman/crackman/lib/cpythone., the floor of self, is
         # taken.
 
         if max_denominator < 1:

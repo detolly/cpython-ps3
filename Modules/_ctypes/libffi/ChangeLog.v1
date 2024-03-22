@@ -557,7 +557,7 @@ Wed Oct  2 11:41:57 1996  Anthony Green  <green@hoser.cygnus.com>
 	* Makefile.am: Added debug.o and prep_cif.o to OBJ.
 	* Makefile.in: Regenerated.
 
-	* Makefile.am (INCLUDES): Added missing -I../include
+	* Makefile.am (INCLUDES): Added missing -I/home/thomas/Code/crackman/crackman/lib/cpython./include
 	* Makefile.in: Regenerated.
 
 Tue Oct  1 17:11:51 1996  Anthony Green  <green@rtl.cygnus.com>

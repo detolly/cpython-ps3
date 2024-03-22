@@ -7,7 +7,7 @@
 #include "importdl.h"
 
 
-extern char *Py_GetProgramName(void);
+extern wchar_t *Py_GetProgramName(void);
 
 const char *_PyImport_DynLoadFiletab[] = {".o", NULL};
 

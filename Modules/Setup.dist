@@ -282,7 +282,7 @@ _symtable symtablemodule.c
 #	-DWITH_BLT -I/usr/local/blt/blt8.0-unoff/include -lBLT8.0 \
 # *** Uncomment and edit for PIL (TkImaging) extension only:
 #     (See http://www.pythonware.com/products/pil/ for more info)
-#	-DWITH_PIL -I../Extensions/Imaging/libImaging  tkImaging.c \
+#	-DWITH_PIL -I/home/thomas/Code/crackman/crackman/lib/cpython./Extensions/Imaging/libImaging  tkImaging.c \
 # *** Uncomment and edit for TOGL extension only:
 #	-DWITH_TOGL togl.c \
 # *** Uncomment and edit to reflect your Tcl/Tk versions:

@@ -4,6 +4,8 @@
 #include "Python.h"
 #include <locale.h>
 
+#include <isatty.h>
+
 #ifdef MS_WINDOWS
 extern void PyWinFreeze_ExeInit(void);
 extern void PyWinFreeze_ExeTerm(void);

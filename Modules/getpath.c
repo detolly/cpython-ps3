@@ -465,7 +465,7 @@ calculate_path(void)
     char *_rtpypath = Py_GETENV("PYTHONPATH"); /* XXX use wide version on Windows */
     wchar_t *rtpypath = NULL;
     wchar_t *home = Py_GetPythonHome();
-    char *_path = getenv("PATH");
+    char *_path = Py_GETENV("PATH");
     wchar_t *path_buffer = NULL;
     wchar_t *path = NULL;
     wchar_t *prog = Py_GetProgramName();

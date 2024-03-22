@@ -4,6 +4,7 @@
 #include "osdefs.h"
 
 #include <locale.h>
+#include <isatty.h>
 
 #if defined(MS_WINDOWS) || defined(__CYGWIN__)
 #include <windows.h>

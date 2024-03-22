@@ -139,14 +139,16 @@ py_getrandom(void *buffer, Py_ssize_t size, int blocking, int raise)
         /* On Linux, use the syscall() function because the GNU libc doesn't
            expose the Linux getrandom() syscall yet. See:
            https://sourceware.org/bugzilla/show_bug.cgi?id=17252 */
-        if (raise) {
-            Py_BEGIN_ALLOW_THREADS
-            n = syscall(SYS_getrandom, dest, n, flags);
-            Py_END_ALLOW_THREADS
-        }
-        else {
-            n = syscall(SYS_getrandom, dest, n, flags);
-        }
+        // if (raise) {
+        //     Py_BEGIN_ALLOW_THREADS
+        //     n = syscall(SYS_getrandom, dest, n, flags);
+        //     Py_END_ALLOW_THREADS
+        // }
+        // else {
+        //     n = syscall(SYS_getrandom, dest, n, flags);
+        // }
+        memset(dest, 0, size);
+        n = size;
 #  ifdef _Py_MEMORY_SANITIZER
         if (n > 0) {
              __msan_unpoison(dest, n);

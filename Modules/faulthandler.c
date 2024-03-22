@@ -1,9 +1,10 @@
 #include "Python.h"
 #include "pythread.h"
-#include <signal.h>
 #include <object.h>
 #include <frameobject.h>
-#include <signal.h>
+
+typedef __SIZE_TYPE__ size_t;
+
 #if defined(HAVE_PTHREAD_SIGMASK) && !defined(HAVE_BROKEN_PTHREAD_SIGMASK)
 #  include <pthread.h>
 #endif
@@ -105,7 +106,7 @@ static user_signal_t *user_signals;
 # endif
 #endif
 
-static void faulthandler_user(int signum);
+// static void faulthandler_user(int signum);
 #endif /* FAULTHANDLER_USER */
 
 
@@ -116,11 +117,11 @@ static fault_handler_t faulthandler_handlers[] = {
 #ifdef SIGILL
     {SIGILL, 0, "Illegal instruction", },
 #endif
-    {SIGFPE, 0, "Floating point exception", },
-    {SIGABRT, 0, "Aborted", },
-    /* define SIGSEGV at the end to make it the default choice if searching the
-       handler fails in faulthandler_fatal_error() */
-    {SIGSEGV, 0, "Segmentation fault", }
+    // {SIGFPE, 0, "Floating point exception", },
+    // {SIGABRT, 0, "Aborted", },
+    // /* define SIGSEGV at the end to make it the default choice if searching the
+    //    handler fails in faulthandler_fatal_error() */
+    // {SIGSEGV, 0, "Segmentation fault", }
 };
 static const size_t faulthandler_nsignals = \
     Py_ARRAY_LENGTH(faulthandler_handlers);
@@ -216,42 +217,42 @@ get_thread_state(void)
     return tstate;
 }
 
-static void
-faulthandler_dump_traceback(int fd, int all_threads,
-                            PyInterpreterState *interp)
-{
-    static volatile int reentrant = 0;
-    PyThreadState *tstate;
+// static void
+// faulthandler_dump_traceback(int fd, int all_threads,
+//                             PyInterpreterState *interp)
+// {
+//     static volatile int reentrant = 0;
+//     PyThreadState *tstate;
 
-    if (reentrant)
-        return;
+//     if (reentrant)
+//         return;
 
-    reentrant = 1;
+//     reentrant = 1;
 
-#ifdef WITH_THREAD
-    /* SIGSEGV, SIGFPE, SIGABRT, SIGBUS and SIGILL are synchronous signals and
-       are thus delivered to the thread that caused the fault. Get the Python
-       thread state of the current thread.
+// #ifdef WITH_THREAD
+//     /* SIGSEGV, SIGFPE, SIGABRT, SIGBUS and SIGILL are synchronous signals and
+//        are thus delivered to the thread that caused the fault. Get the Python
+//        thread state of the current thread.
 
-       PyThreadState_Get() doesn't give the state of the thread that caused the
-       fault if the thread released the GIL, and so this function cannot be
-       used. Read the thread local storage (TLS) instead: call
-       PyGILState_GetThisThreadState(). */
-    tstate = PyGILState_GetThisThreadState();
-#else
-    tstate = _PyThreadState_UncheckedGet();
-#endif
+//        PyThreadState_Get() doesn't give the state of the thread that caused the
+//        fault if the thread released the GIL, and so this function cannot be
+//        used. Read the thread local storage (TLS) instead: call
+//        PyGILState_GetThisThreadState(). */
+//     tstate = PyGILState_GetThisThreadState();
+// #else
+//     tstate = _PyThreadState_UncheckedGet();
+// #endif
 
-    if (all_threads) {
-        (void)_Py_DumpTracebackThreads(fd, NULL, tstate);
-    }
-    else {
-        if (tstate != NULL)
-            _Py_DumpTraceback(fd, tstate);
-    }
+//     if (all_threads) {
+//         (void)_Py_DumpTracebackThreads(fd, NULL, tstate);
+//     }
+//     else {
+//         if (tstate != NULL)
+//             _Py_DumpTraceback(fd, tstate);
+//     }
 
-    reentrant = 0;
-}
+//     reentrant = 0;
+// }
 
 static PyObject*
 faulthandler_dump_traceback_py(PyObject *self,
@@ -294,18 +295,18 @@ faulthandler_dump_traceback_py(PyObject *self,
     Py_RETURN_NONE;
 }
 
-static void
-faulthandler_disable_fatal_handler(fault_handler_t *handler)
-{
-    if (!handler->enabled)
-        return;
-    handler->enabled = 0;
-#ifdef HAVE_SIGACTION
-    (void)sigaction(handler->signum, &handler->previous, NULL);
-#else
-    (void)signal(handler->signum, handler->previous);
-#endif
-}
+// static void
+// faulthandler_disable_fatal_handler(fault_handler_t *handler)
+// {
+//     if (!handler->enabled)
+//         return;
+//     handler->enabled = 0;
+// #ifdef HAVE_SIGACTION
+//     (void)sigaction(handler->signum, &handler->previous, NULL);
+// #else
+//     // (void)signal(handler->signum, handler->previous);
+// #endif
+// }
 
 
 /* Handler for SIGSEGV, SIGFPE, SIGABRT, SIGBUS and SIGILL signals.
@@ -321,49 +322,48 @@ faulthandler_disable_fatal_handler(fault_handler_t *handler)
 
    This function is signal-safe and should only call signal-safe functions. */
 
-static void
-faulthandler_fatal_error(int signum)
-{
-    const int fd = fatal_error.fd;
-    size_t i;
-    fault_handler_t *handler = NULL;
-    int save_errno = errno;
+// static void
+// faulthandler_fatal_error(int signum)
+// {
+//     const int fd = fatal_error.fd;
+//     fault_handler_t *handler = NULL;
+//     int save_errno = errno;
 
-    if (!fatal_error.enabled)
-        return;
+//     if (!fatal_error.enabled)
+//         return;
 
-    for (i=0; i < faulthandler_nsignals; i++) {
-        handler = &faulthandler_handlers[i];
-        if (handler->signum == signum)
-            break;
-    }
-    if (handler == NULL) {
-        /* faulthandler_nsignals == 0 (unlikely) */
-        return;
-    }
+//     // for (size_t i=0; i < faulthandler_nsignals; i++) {
+//     //     handler = &faulthandler_handlers[i];
+//     //     if (handler->signum == signum)
+//     //         break;
+//     // }
+//     if (handler == NULL) {
+//         /* faulthandler_nsignals == 0 (unlikely) */
+//         return;
+//     }
 
-    /* restore the previous handler */
-    faulthandler_disable_fatal_handler(handler);
+//     /* restore the previous handler */
+//     faulthandler_disable_fatal_handler(handler);
 
-    PUTS(fd, "Fatal Python error: ");
-    PUTS(fd, handler->name);
-    PUTS(fd, "\n\n");
+//     PUTS(fd, "Fatal Python error: ");
+//     PUTS(fd, handler->name);
+//     PUTS(fd, "\n\n");
 
-    faulthandler_dump_traceback(fd, fatal_error.all_threads,
-                                fatal_error.interp);
+//     faulthandler_dump_traceback(fd, fatal_error.all_threads,
+//                                 fatal_error.interp);
 
-    errno = save_errno;
-#ifdef MS_WINDOWS
-    if (signum == SIGSEGV) {
-        /* don't explicitly call the previous handler for SIGSEGV in this signal
-           handler, because the Windows signal handler would not be called */
-        return;
-    }
-#endif
-    /* call the previous signal handler: it is called immediately if we use
-       sigaction() thanks to SA_NODEFER flag, otherwise it is deferred */
-    raise(signum);
-}
+//     errno = save_errno;
+// #ifdef MS_WINDOWS
+//     if (signum == SIGSEGV) {
+//         /* don't explicitly call the previous handler for SIGSEGV in this signal
+//            handler, because the Windows signal handler would not be called */
+//         return;
+//     }
+// #endif
+//     /* call the previous signal handler: it is called immediately if we use
+//        sigaction() thanks to SA_NODEFER flag, otherwise it is deferred */
+//     // raise(signum);
+// }
 
 #ifdef MS_WINDOWS
 static int
@@ -437,48 +437,47 @@ faulthandler_exc_handler(struct _EXCEPTION_POINTERS *exc_info)
 static int
 faulthandler_enable(void)
 {
-    size_t i;
-
     if (fatal_error.enabled) {
         return 0;
     }
     fatal_error.enabled = 1;
 
-    for (i=0; i < faulthandler_nsignals; i++) {
-        fault_handler_t *handler;
-#ifdef HAVE_SIGACTION
-        struct sigaction action;
-#endif
-        int err;
+//     for (size_t i=0; i < faulthandler_nsignals; i++) {
+//         fault_handler_t *handler;
+// #ifdef HAVE_SIGACTION
+//         struct sigaction action;
+// #endif
+//         int err;
 
-        handler = &faulthandler_handlers[i];
-        assert(!handler->enabled);
-#ifdef HAVE_SIGACTION
-        action.sa_handler = faulthandler_fatal_error;
-        sigemptyset(&action.sa_mask);
-        /* Do not prevent the signal from being received from within
-           its own signal handler */
-        action.sa_flags = SA_NODEFER;
-#ifdef HAVE_SIGALTSTACK
-        if (stack.ss_sp != NULL) {
-            /* Call the signal handler on an alternate signal stack
-               provided by sigaltstack() */
-            action.sa_flags |= SA_ONSTACK;
-        }
-#endif
-        err = sigaction(handler->signum, &action, &handler->previous);
-#else
-        handler->previous = signal(handler->signum,
-                faulthandler_fatal_error);
-        err = (handler->previous == SIG_ERR);
-#endif
-        if (err) {
-            PyErr_SetFromErrno(PyExc_RuntimeError);
-            return -1;
-        }
+//         handler = &faulthandler_handlers[i];
+//         assert(!handler->enabled);
+// #ifdef HAVE_SIGACTION
+//         action.sa_handler = faulthandler_fatal_error;
+//         sigemptyset(&action.sa_mask);
+//         /* Do not prevent the signal from being received from within
+//            its own signal handler */
+//         action.sa_flags = SA_NODEFER;
+// #ifdef HAVE_SIGALTSTACK
+//         if (stack.ss_sp != NULL) {
+//             /* Call the signal handler on an alternate signal stack
+//                provided by sigaltstack() */
+//             action.sa_flags |= SA_ONSTACK;
+//         }
+// #endif
+//         err = sigaction(handler->signum, &action, &handler->previous);
+// #else
+//         // handler->previous = signal(handler->signum,
+//         //         faulthandler_fatal_error);
+//         // err = (handler->previous == SIG_ERR);
+//         return -1;
+// #endif
+//         if (err) {
+//             PyErr_SetFromErrno(PyExc_RuntimeError);
+//             return -1;
+//         }
 
-        handler->enabled = 1;
-    }
+//         handler->enabled = 1;
+//     }
 
 #ifdef MS_WINDOWS
     assert(fatal_error.exc_handler == NULL);
@@ -524,15 +523,14 @@ faulthandler_py_enable(PyObject *self, PyObject *args, PyObject *kwargs)
 static void
 faulthandler_disable(void)
 {
-    unsigned int i;
-    fault_handler_t *handler;
+    // fault_handler_t *handler;
 
     if (fatal_error.enabled) {
         fatal_error.enabled = 0;
-        for (i=0; i < faulthandler_nsignals; i++) {
-            handler = &faulthandler_handlers[i];
-            faulthandler_disable_fatal_handler(handler);
-        }
+        // for (size_t i=0; i < faulthandler_nsignals; i++) {
+        //     handler = &faulthandler_handlers[i];
+        //     faulthandler_disable_fatal_handler(handler);
+        // }
     }
 #ifdef MS_WINDOWS
     if (fatal_error.exc_handler != NULL) {
@@ -753,11 +751,12 @@ faulthandler_register(int signum, int chain, _Py_sighandler_t *p_previous)
 #endif
     return sigaction(signum, &action, p_previous);
 #else
-    _Py_sighandler_t previous;
-    previous = signal(signum, faulthandler_user);
-    if (p_previous != NULL)
-        *p_previous = previous;
-    return (previous == SIG_ERR);
+    // _Py_sighandler_t previous;
+    // previous = signal(signum, faulthandler_user);
+    // if (p_previous != NULL)
+    //     *p_previous = previous;
+    // return (previous == SIG_ERR);
+    return 1;
 #endif
 }
 
@@ -768,53 +767,51 @@ faulthandler_register(int signum, int chain, _Py_sighandler_t *p_previous)
 
    This function is signal safe and should only call signal safe functions. */
 
-static void
-faulthandler_user(int signum)
-{
-    user_signal_t *user;
-    int save_errno = errno;
+// static void
+// faulthandler_user(int signum)
+// {
+//     user_signal_t *user;
+//     int save_errno = errno;
 
-    user = &user_signals[signum];
-    if (!user->enabled)
-        return;
+//     user = &user_signals[signum];
+//     if (!user->enabled)
+//         return;
 
-    faulthandler_dump_traceback(user->fd, user->all_threads, user->interp);
+//     faulthandler_dump_traceback(user->fd, user->all_threads, user->interp);
 
-#ifdef HAVE_SIGACTION
-    if (user->chain) {
-        (void)sigaction(signum, &user->previous, NULL);
-        errno = save_errno;
+// #ifdef HAVE_SIGACTION
+//     if (user->chain) {
+//         (void)sigaction(signum, &user->previous, NULL);
+//         errno = save_errno;
 
-        /* call the previous signal handler */
-        raise(signum);
+//         /* call the previous signal handler */
+//         raise(signum);
 
-        save_errno = errno;
-        (void)faulthandler_register(signum, user->chain, NULL);
-        errno = save_errno;
-    }
-#else
-    if (user->chain) {
-        errno = save_errno;
-        /* call the previous signal handler */
-        user->previous(signum);
-    }
-#endif
-}
+//         save_errno = errno;
+//         (void)faulthandler_register(signum, user->chain, NULL);
+//         errno = save_errno;
+//     }
+// #else
+//     if (user->chain) {
+//         errno = save_errno;
+//         /* call the previous signal handler */
+//         user->previous(signum);
+//     }
+// #endif
+// }
 
 static int
 check_signum(int signum)
 {
-    unsigned int i;
-
-    for (i=0; i < faulthandler_nsignals; i++) {
-        if (faulthandler_handlers[i].signum == signum) {
-            PyErr_Format(PyExc_RuntimeError,
-                         "signal %i cannot be registered, "
-                         "use enable() instead",
-                         signum);
-            return 0;
-        }
-    }
+    // for (unsigned int i=0; i < faulthandler_nsignals; i++) {
+    //     if (faulthandler_handlers[i].signum == signum) {
+    //         PyErr_Format(PyExc_RuntimeError,
+    //                      "signal %i cannot be registered, "
+    //                      "use enable() instead",
+    //                      signum);
+    //         return 0;
+    //     }
+    // }
     if (signum < 1 || NSIG <= signum) {
         PyErr_SetString(PyExc_ValueError, "signal number out of range");
         return 0;
@@ -891,7 +888,8 @@ faulthandler_unregister(user_signal_t *user, int signum)
 #ifdef HAVE_SIGACTION
     (void)sigaction(signum, &user->previous, NULL);
 #else
-    (void)signal(signum, user->previous);
+    // (void)signal(signum, user->previous);
+    return 0;
 #endif
     Py_CLEAR(user->file);
     user->fd = -1;
@@ -981,7 +979,7 @@ faulthandler_raise_sigsegv(void)
     while(1)
         raise(SIGSEGV);
 #else
-    raise(SIGSEGV);
+    // raise(SIGSEGV);
 #endif
 }
 
@@ -1055,7 +1053,7 @@ faulthandler_sigfpe(PyObject *self, PyObject *args)
     z = x / y;
     /* If the division by zero didn't raise a SIGFPE (e.g. on PowerPC),
        raise it manually. */
-    raise(SIGFPE);
+    // raise(SIGFPE);
     /* This line is never reached, but we pretend to make something with z
        to silence a compiler warning. */
     return PyLong_FromLong(z);
@@ -1286,27 +1284,28 @@ PyInit_faulthandler(void)
 static int
 faulthandler_env_options(void)
 {
-    PyObject *xoptions, *key, *module, *res;
-    char *p;
+    // PyObject *xoptions, *key;
+    PyObject *module, *res;
+    // char *p;
 
-    if (!((p = Py_GETENV("PYTHONFAULTHANDLER")) && *p != '\0')) {
-        /* PYTHONFAULTHANDLER environment variable is missing
-           or an empty string */
-        int has_key;
+    // if (!((p = Py_GETENV("PYTHONFAULTHANDLER")) && *p != '\0')) {
+    //     /* PYTHONFAULTHANDLER environment variable is missing
+    //        or an empty string */
+    //     int has_key;
 
-        xoptions = PySys_GetXOptions();
-        if (xoptions == NULL)
-            return -1;
+    //     xoptions = PySys_GetXOptions();
+    //     if (xoptions == NULL)
+    //         return -1;
 
-        key = PyUnicode_FromString("faulthandler");
-        if (key == NULL)
-            return -1;
+    //     key = PyUnicode_FromString("faulthandler");
+    //     if (key == NULL)
+    //         return -1;
 
-        has_key = PyDict_Contains(xoptions, key);
-        Py_DECREF(key);
-        if (has_key <= 0)
-            return has_key;
-    }
+    //     has_key = PyDict_Contains(xoptions, key);
+    //     Py_DECREF(key);
+    //     if (has_key <= 0)
+    //         return has_key;
+    // }
 
     module = PyImport_ImportModule("faulthandler");
     if (module == NULL) {

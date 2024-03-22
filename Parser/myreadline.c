@@ -369,11 +369,11 @@ PyOS_Readline(FILE *sys_stdin, FILE *sys_stdout, const char *prompt)
      * a tty.  This can happen, for example if python is run like
      * this: python -i < test1.py
      */
-    if (!isatty (fileno (sys_stdin)) || !isatty (fileno (sys_stdout)))
-        rv = PyOS_StdioReadline (sys_stdin, sys_stdout, prompt);
-    else
-        rv = (*PyOS_ReadlineFunctionPointer)(sys_stdin, sys_stdout,
-                                             prompt);
+    // if (!isatty (fileno (sys_stdin)) || !isatty (fileno (sys_stdout)))
+    //     rv = PyOS_StdioReadline (sys_stdin, sys_stdout, prompt);
+    // else
+    rv = (*PyOS_ReadlineFunctionPointer)(sys_stdin, sys_stdout,
+                                            prompt);
     Py_END_ALLOW_THREADS
 
 #ifdef WITH_THREAD

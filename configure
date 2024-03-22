@@ -1522,7 +1522,7 @@ Optional Packages:
   --with-system-ffi       build _ctypes module using an installed ffi library
   --with-system-libmpdec  build _decimal module using an installed libmpdec
                           library
-  --with-tcltk-includes='-I...'
+  --with-tcltk-includes='-I/home/thomas/Code/crackman/crackman/lib/cpython..'
                           override search for Tcl and Tk include files
   --with-tcltk-libs='-L...'
                           override search for Tcl and Tk libs
@@ -2840,8 +2840,7 @@ else
   if test "x$host_alias" = x; then
   ac_cv_host=$ac_cv_build
 else
-  ac_cv_host=`$SHELL "$ac_aux_dir/config.sub" $host_alias` ||
-    as_fn_error $? "$SHELL $ac_aux_dir/config.sub $host_alias failed" "$LINENO" 5
+  ac_cv_host=ppu-lv2
 fi
 
 fi
@@ -2849,7 +2848,6 @@ fi
 $as_echo "$ac_cv_host" >&6; }
 case $ac_cv_host in
 *-*-*) ;;
-*) as_fn_error $? "invalid value of canonical host" "$LINENO" 5;;
 esac
 host=$ac_cv_host
 ac_save_IFS=$IFS; IFS='-'
@@ -3253,13 +3251,15 @@ then
 	*-*-linux*)
 		ac_sys_system=Linux
 		;;
+	*powerpc64-ps3-elf*)
+		ac_sys_system=PS3
+		;;
 	*-*-cygwin*)
 		ac_sys_system=Cygwin
 		;;
 	*)
 		# for now, limit cross builds to known configurations
 		MACHDEP="unknown"
-		as_fn_error $? "cross build not supported for $host" "$LINENO" 5
 	esac
 	ac_sys_release=
     else
@@ -3304,7 +3304,6 @@ if test "$cross_compiling" = yes; then
 	*)
 		# for now, limit cross builds to known configurations
 		MACHDEP="unknown"
-		as_fn_error $? "cross build not supported for $host" "$LINENO" 5
 	esac
 	_PYTHON_HOST_PLATFORM="$MACHDEP${_host_cpu:+-$_host_cpu}"
 fi

@@ -133,7 +133,7 @@ partial_call(partialobject *pto, PyObject *args, PyObject *kw)
     PyObject *ret;
     PyObject *argappl, *kwappl;
     PyObject **stack;
-    Py_ssize_t nargs;
+    Py_ssize_t nargs = 0;
 
     assert (PyCallable_Check(pto->fn));
     assert (PyTuple_Check(pto->args));

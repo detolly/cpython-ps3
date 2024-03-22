@@ -1908,7 +1908,8 @@ builtin_input_impl(PyObject *module, PyObject *prompt)
         Py_DECREF(tmp);
         if (fd < 0 && PyErr_Occurred())
             return NULL;
-        tty = fd == fileno(stdin) && isatty(fd);
+        // tty = fd == fileno(stdin) && isatty(fd);
+        tty = 0;
     }
     if (tty) {
         tmp = _PyObject_CallMethodId(fout, &PyId_fileno, NULL);
@@ -1921,7 +1922,8 @@ builtin_input_impl(PyObject *module, PyObject *prompt)
             Py_DECREF(tmp);
             if (fd < 0 && PyErr_Occurred())
                 return NULL;
-            tty = fd == fileno(stdout) && isatty(fd);
+            // tty = fd == fileno(stdout) && isatty(fd);
+            tty = 0;
         }
     }
 

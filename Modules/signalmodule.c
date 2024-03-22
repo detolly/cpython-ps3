@@ -109,7 +109,8 @@ static volatile struct {
 } wakeup = {INVALID_FD, 0, 0};
 #else
 #define INVALID_FD (-1)
-static volatile sig_atomic_t wakeup_fd = -1;
+// static volatile sig_atomic_t wakeup_fd = -1;
+static volatile int wakeup_fd = 1;
 #endif
 
 /* Speed up sigcheck() when none tripped */
@@ -444,11 +445,12 @@ signal_signal_impl(PyObject *module, int signalnum, PyObject *handler)
                         "signal number out of range");
         return NULL;
     }
-    if (handler == IgnoreHandler)
-        func = SIG_IGN;
-    else if (handler == DefaultHandler)
-        func = SIG_DFL;
-    else if (!PyCallable_Check(handler)) {
+    // if (handler == IgnoreHandler)
+    //     func = SIG_IGN;
+    // else if (handler == DefaultHandler)
+    //     func = SIG_DFL;
+    // else 
+    if (!PyCallable_Check(handler)) {
         PyErr_SetString(PyExc_TypeError,
 "signal handler must be signal.SIG_IGN, signal.SIG_DFL, or a callable object");
                 return NULL;
@@ -1233,18 +1235,18 @@ PyInit__signal(void)
     /* Add some symbolic constants to the module */
     d = PyModule_GetDict(m);
 
-    x = DefaultHandler = PyLong_FromVoidPtr((void *)SIG_DFL);
-    if (!x || PyDict_SetItemString(d, "SIG_DFL", x) < 0)
-        goto finally;
+    // x = DefaultHandler = PyLong_FromVoidPtr((void *)SIG_DFL);
+    // if (!x || PyDict_SetItemString(d, "SIG_DFL", x) < 0)
+    //     goto finally;
 
-    x = IgnoreHandler = PyLong_FromVoidPtr((void *)SIG_IGN);
-    if (!x || PyDict_SetItemString(d, "SIG_IGN", x) < 0)
-        goto finally;
+    // x = IgnoreHandler = PyLong_FromVoidPtr((void *)SIG_IGN);
+    // if (!x || PyDict_SetItemString(d, "SIG_IGN", x) < 0)
+    //     goto finally;
 
-    x = PyLong_FromLong((long)NSIG);
-    if (!x || PyDict_SetItemString(d, "NSIG", x) < 0)
-        goto finally;
-    Py_DECREF(x);
+    // x = PyLong_FromLong((long)NSIG);
+    // if (!x || PyDict_SetItemString(d, "NSIG", x) < 0)
+    //     goto finally;
+    // Py_DECREF(x);
 
 #ifdef SIG_BLOCK
     if (PyModule_AddIntMacro(m, SIG_BLOCK))
@@ -1269,20 +1271,21 @@ PyInit__signal(void)
         void (*t)(int);
         t = PyOS_getsig(i);
         _Py_atomic_store_relaxed(&Handlers[i].tripped, 0);
-        if (t == SIG_DFL)
-            Handlers[i].func = DefaultHandler;
-        else if (t == SIG_IGN)
-            Handlers[i].func = IgnoreHandler;
-        else
-            Handlers[i].func = Py_None; /* None of our business */
+        // if (t == SIG_DFL)
+        //     Handlers[i].func = DefaultHandler;
+        // else 
+        // if (t == SIG_IGN)
+        //     Handlers[i].func = IgnoreHandler;
+        // else
+        Handlers[i].func = Py_None; /* None of our business */
         Py_INCREF(Handlers[i].func);
     }
-    if (Handlers[SIGINT].func == DefaultHandler) {
-        /* Install default int handler */
-        Py_INCREF(IntHandler);
-        Py_SETREF(Handlers[SIGINT].func, IntHandler);
-        PyOS_setsig(SIGINT, signal_handler);
-    }
+    // if (Handlers[SIGINT].func == DefaultHandler) {
+    //     /* Install default int handler */
+    //     Py_INCREF(IntHandler);
+    //     Py_SETREF(Handlers[SIGINT].func, IntHandler);
+    //     PyOS_setsig(SIGINT, signal_handler);
+    // }
 
 #ifdef SIGHUP
     if (PyModule_AddIntMacro(m, SIGHUP))
@@ -1491,9 +1494,9 @@ finisignal(void)
         func = Handlers[i].func;
         _Py_atomic_store_relaxed(&Handlers[i].tripped, 0);
         Handlers[i].func = NULL;
-        if (func != NULL && func != Py_None &&
-            func != DefaultHandler && func != IgnoreHandler)
-            PyOS_setsig(i, SIG_DFL);
+        // if (func != NULL && func != Py_None &&
+        //     func != DefaultHandler && func != IgnoreHandler)
+        //     PyOS_setsig(i, SIG_DFL);
         Py_XDECREF(func);
     }
 
@@ -1567,7 +1570,7 @@ PyErr_CheckSignals(void)
 void
 PyErr_SetInterrupt(void)
 {
-    trip_signal(SIGINT);
+    // trip_signal(SIGINT);
 }
 
 void
@@ -1588,14 +1591,14 @@ PyOS_FiniInterrupts(void)
 int
 PyOS_InterruptOccurred(void)
 {
-    if (_Py_atomic_load_relaxed(&Handlers[SIGINT].tripped)) {
-#ifdef WITH_THREAD
-        if (PyThread_get_thread_ident() != main_thread)
-            return 0;
-#endif
-        _Py_atomic_store_relaxed(&Handlers[SIGINT].tripped, 0);
-        return 1;
-    }
+//     if (_Py_atomic_load_relaxed(&Handlers[SIGINT].tripped)) {
+// #ifdef WITH_THREAD
+//         if (PyThread_get_thread_ident() != main_thread)
+//             return 0;
+// #endif
+//         _Py_atomic_store_relaxed(&Handlers[SIGINT].tripped, 0);
+//         return 1;
+//     }
     return 0;
 }
 

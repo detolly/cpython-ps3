@@ -55,7 +55,7 @@ man3dir = ${mandir}/man3
 pkgconfigdir = ${libdir}/pkgconfig
 SRCDIR=
 ZINC=
-ZINCOUT=-I.
+ZINCOUT=-I/home/thomas/Code/crackman/crackman/lib/cpython
 
 OBJZ = adler32.o crc32.o deflate.o infback.o inffast.o inflate.o inftrees.o trees.o zutil.o
 OBJG = compress.o uncompr.o gzclose.o gzlib.o gzread.o gzwrite.o

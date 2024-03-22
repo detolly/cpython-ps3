@@ -1,0 +1,677 @@
+[
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Parser/acceler.o Parser/acceler.c",
+    "file": "Parser/acceler.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Parser/grammar1.o Parser/grammar1.c",
+    "file": "Parser/grammar1.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Parser/listnode.o Parser/listnode.c",
+    "file": "Parser/listnode.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Parser/node.o Parser/node.c",
+    "file": "Parser/node.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Parser/parser.o Parser/parser.c",
+    "file": "Parser/parser.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Parser/bitset.o Parser/bitset.c",
+    "file": "Parser/bitset.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Parser/metagrammar.o Parser/metagrammar.c",
+    "file": "Parser/metagrammar.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Parser/firstsets.o Parser/firstsets.c",
+    "file": "Parser/firstsets.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Parser/grammar.o Parser/grammar.c",
+    "file": "Parser/grammar.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Parser/pgen.o Parser/pgen.c",
+    "file": "Parser/pgen.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Parser/myreadline.o Parser/myreadline.c",
+    "file": "Parser/myreadline.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Parser/parsetok.o Parser/parsetok.c",
+    "file": "Parser/parsetok.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Parser/tokenizer.o Parser/tokenizer.c",
+    "file": "Parser/tokenizer.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/abstract.o Objects/abstract.c",
+    "file": "Objects/abstract.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/accu.o Objects/accu.c",
+    "file": "Objects/accu.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/boolobject.o Objects/boolobject.c",
+    "file": "Objects/boolobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/bytes_methods.o Objects/bytes_methods.c",
+    "file": "Objects/bytes_methods.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/bytearrayobject.o Objects/bytearrayobject.c",
+    "file": "Objects/bytearrayobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/bytesobject.o Objects/bytesobject.c",
+    "file": "Objects/bytesobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/cellobject.o Objects/cellobject.c",
+    "file": "Objects/cellobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/classobject.o Objects/classobject.c",
+    "file": "Objects/classobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/codeobject.o Objects/codeobject.c",
+    "file": "Objects/codeobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/complexobject.o Objects/complexobject.c",
+    "file": "Objects/complexobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/descrobject.o Objects/descrobject.c",
+    "file": "Objects/descrobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/enumobject.o Objects/enumobject.c",
+    "file": "Objects/enumobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/exceptions.o Objects/exceptions.c",
+    "file": "Objects/exceptions.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/genobject.o Objects/genobject.c",
+    "file": "Objects/genobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/fileobject.o Objects/fileobject.c",
+    "file": "Objects/fileobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/floatobject.o Objects/floatobject.c",
+    "file": "Objects/floatobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/frameobject.o Objects/frameobject.c",
+    "file": "Objects/frameobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/funcobject.o Objects/funcobject.c",
+    "file": "Objects/funcobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/iterobject.o Objects/iterobject.c",
+    "file": "Objects/iterobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/listobject.o Objects/listobject.c",
+    "file": "Objects/listobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/longobject.o Objects/longobject.c",
+    "file": "Objects/longobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/dictobject.o Objects/dictobject.c",
+    "file": "Objects/dictobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/odictobject.o Objects/odictobject.c",
+    "file": "Objects/odictobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/memoryobject.o Objects/memoryobject.c",
+    "file": "Objects/memoryobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/methodobject.o Objects/methodobject.c",
+    "file": "Objects/methodobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/moduleobject.o Objects/moduleobject.c",
+    "file": "Objects/moduleobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/namespaceobject.o Objects/namespaceobject.c",
+    "file": "Objects/namespaceobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/object.o Objects/object.c",
+    "file": "Objects/object.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/obmalloc.o Objects/obmalloc.c",
+    "file": "Objects/obmalloc.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/capsule.o Objects/capsule.c",
+    "file": "Objects/capsule.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/rangeobject.o Objects/rangeobject.c",
+    "file": "Objects/rangeobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/setobject.o Objects/setobject.c",
+    "file": "Objects/setobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/sliceobject.o Objects/sliceobject.c",
+    "file": "Objects/sliceobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/structseq.o Objects/structseq.c",
+    "file": "Objects/structseq.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/tupleobject.o Objects/tupleobject.c",
+    "file": "Objects/tupleobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/typeobject.o Objects/typeobject.c",
+    "file": "Objects/typeobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/unicodeobject.o Objects/unicodeobject.c",
+    "file": "Objects/unicodeobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/unicodectype.o Objects/unicodectype.c",
+    "file": "Objects/unicodectype.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Objects/weakrefobject.o Objects/weakrefobject.c",
+    "file": "Objects/weakrefobject.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/_warnings.o Python/_warnings.c",
+    "file": "Python/_warnings.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/Python-ast.o Python/Python-ast.c",
+    "file": "Python/Python-ast.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/asdl.o Python/asdl.c",
+    "file": "Python/asdl.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/ast.o Python/ast.c",
+    "file": "Python/ast.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/bltinmodule.o Python/bltinmodule.c",
+    "file": "Python/bltinmodule.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/ceval.o Python/ceval.c",
+    "file": "Python/ceval.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/compile.o Python/compile.c",
+    "file": "Python/compile.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/codecs.o Python/codecs.c",
+    "file": "Python/codecs.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/dynamic_annotations.o Python/dynamic_annotations.c",
+    "file": "Python/dynamic_annotations.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/errors.o Python/errors.c",
+    "file": "Python/errors.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/frozenmain.o Python/frozenmain.c",
+    "file": "Python/frozenmain.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/future.o Python/future.c",
+    "file": "Python/future.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/getargs.o Python/getargs.c",
+    "file": "Python/getargs.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/getcompiler.o Python/getcompiler.c",
+    "file": "Python/getcompiler.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/getcopyright.o Python/getcopyright.c",
+    "file": "Python/getcopyright.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -DPLATFORM='\"unknown\"' -o Python/getplatform.o ./Python/getplatform.c",
+    "file": "./Python/getplatform.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/getversion.o Python/getversion.c",
+    "file": "Python/getversion.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/graminit.o Python/graminit.c",
+    "file": "Python/graminit.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/import.o Python/import.c",
+    "file": "Python/import.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -I. -o Python/importdl.o ./Python/importdl.c",
+    "file": "./Python/importdl.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/marshal.o Python/marshal.c",
+    "file": "Python/marshal.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/modsupport.o Python/modsupport.c",
+    "file": "Python/modsupport.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/mystrtoul.o Python/mystrtoul.c",
+    "file": "Python/mystrtoul.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/mysnprintf.o Python/mysnprintf.c",
+    "file": "Python/mysnprintf.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/peephole.o Python/peephole.c",
+    "file": "Python/peephole.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/pyarena.o Python/pyarena.c",
+    "file": "Python/pyarena.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/pyctype.o Python/pyctype.c",
+    "file": "Python/pyctype.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/pyfpe.o Python/pyfpe.c",
+    "file": "Python/pyfpe.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/pyhash.o Python/pyhash.c",
+    "file": "Python/pyhash.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/pylifecycle.o Python/pylifecycle.c",
+    "file": "Python/pylifecycle.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/pymath.o Python/pymath.c",
+    "file": "Python/pymath.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/pystate.o Python/pystate.c",
+    "file": "Python/pystate.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/pythonrun.o Python/pythonrun.c",
+    "file": "Python/pythonrun.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/pytime.o Python/pytime.c",
+    "file": "Python/pytime.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/random.o Python/random.c",
+    "file": "Python/random.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/structmember.o Python/structmember.c",
+    "file": "Python/structmember.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/symtable.o Python/symtable.c",
+    "file": "Python/symtable.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE \\",
+    "file": "\\"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/traceback.o Python/traceback.c",
+    "file": "Python/traceback.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/getopt.o Python/getopt.c",
+    "file": "Python/getopt.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/pystrcmp.o Python/pystrcmp.c",
+    "file": "Python/pystrcmp.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/pystrtod.o Python/pystrtod.c",
+    "file": "Python/pystrtod.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/pystrhex.o Python/pystrhex.c",
+    "file": "Python/pystrhex.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -o Python/dtoa.o Python/dtoa.c",
+    "file": "Python/dtoa.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/formatter_unicode.o Python/formatter_unicode.c",
+    "file": "Python/formatter_unicode.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/fileutils.o Python/fileutils.c",
+    "file": "Python/fileutils.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/dynload_stub.o Python/dynload_stub.c",
+    "file": "Python/dynload_stub.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/dup2.o Python/dup2.c",
+    "file": "Python/dup2.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/strdup.o Python/strdup.c",
+    "file": "Python/strdup.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Modules/config.o Modules/config.c",
+    "file": "Modules/config.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -DPYTHONPATH='\":\"' \\",
+    "file": "\\"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Modules/main.o Modules/main.c",
+    "file": "Modules/main.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Modules/gcmodule.o Modules/gcmodule.c",
+    "file": "Modules/gcmodule.c"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -c ./Modules/posixmodule.c -o Modules/posixmodule.o",
+    "file": "Modules/posixmodule.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -c ./Modules/errnomodule.c -o Modules/errnomodule.o",
+    "file": "Modules/errnomodule.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -c ./Modules/pwdmodule.c -o Modules/pwdmodule.o",
+    "file": "Modules/pwdmodule.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -c ./Modules/_sre.c -o Modules/_sre.o",
+    "file": "Modules/_sre.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -c ./Modules/_codecsmodule.c -o Modules/_codecsmodule.o",
+    "file": "Modules/_codecsmodule.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -c ./Modules/_weakref.c -o Modules/_weakref.o",
+    "file": "Modules/_weakref.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -c ./Modules/_functoolsmodule.c -o Modules/_functoolsmodule.o",
+    "file": "Modules/_functoolsmodule.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -c ./Modules/_operator.c -o Modules/_operator.o",
+    "file": "Modules/_operator.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -c ./Modules/_collectionsmodule.c -o Modules/_collectionsmodule.o",
+    "file": "Modules/_collectionsmodule.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -c ./Modules/itertoolsmodule.c -o Modules/itertoolsmodule.o",
+    "file": "Modules/itertoolsmodule.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -c ./Modules/atexitmodule.c -o Modules/atexitmodule.o",
+    "file": "Modules/atexitmodule.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -c ./Modules/signalmodule.c -o Modules/signalmodule.o",
+    "file": "Modules/signalmodule.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -c ./Modules/_stat.c -o Modules/_stat.o",
+    "file": "Modules/_stat.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -c ./Modules/timemodule.c -o Modules/timemodule.o",
+    "file": "Modules/timemodule.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -c ./Modules/_localemodule.c -o Modules/_localemodule.o",
+    "file": "Modules/_localemodule.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -I./Modules/_io -c ./Modules/_io/_iomodule.c -o Modules/_iomodule.o",
+    "file": "Modules/_iomodule.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -I./Modules/_io -c ./Modules/_io/iobase.c -o Modules/iobase.o",
+    "file": "Modules/iobase.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -I./Modules/_io -c ./Modules/_io/fileio.c -o Modules/fileio.o",
+    "file": "Modules/fileio.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -I./Modules/_io -c ./Modules/_io/bytesio.c -o Modules/bytesio.o",
+    "file": "Modules/bytesio.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -I./Modules/_io -c ./Modules/_io/bufferedio.c -o Modules/bufferedio.o",
+    "file": "Modules/bufferedio.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -I./Modules/_io -c ./Modules/_io/textio.c -o Modules/textio.o",
+    "file": "Modules/textio.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -I./Modules/_io -c ./Modules/_io/stringio.c -o Modules/stringio.o",
+    "file": "Modules/stringio.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -c ./Modules/zipimport.c -o Modules/zipimport.o",
+    "file": "Modules/zipimport.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -c ./Modules/faulthandler.c -o Modules/faulthandler.o",
+    "file": "Modules/faulthandler.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -c ./Modules/_tracemalloc.c -o Modules/_tracemalloc.o",
+    "file": "Modules/_tracemalloc.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -c ./Modules/hashtable.c -o Modules/hashtable.o",
+    "file": "Modules/hashtable.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -c ./Modules/symtablemodule.c -o Modules/symtablemodule.o",
+    "file": "Modules/symtablemodule.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE  -c ./Modules/xxsubtype.c -o Modules/xxsubtype.o",
+    "file": "Modules/xxsubtype.o"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE \\",
+    "file": "\\"
+  },
+  {
+    "directory": ".",
+    "command": "ppu-lv2-gcc -c -fno-strict-aliasing -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers   -I/home/thomas/Code/crackman/crackman/lib/cpython -I./Include    -DPy_BUILD_CORE -o Python/frozen.o Python/frozen.c",
+    "file": "Python/frozen.c"
+  }
+]

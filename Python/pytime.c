@@ -6,6 +6,8 @@
 #if defined(__APPLE__)
 #include <mach/mach_time.h>   /* mach_absolute_time(), mach_timebase_info() */
 #endif
+#include <pymath.h>
+#include <sys/time.h>
 
 #define _PyTime_check_mul_overflow(a, b) \
     (assert(b > 0), \
@@ -623,7 +625,10 @@ pygettimeofday(_PyTime_t *tp, _Py_clock_info_t *info, int raise)
 #ifdef GETTIMEOFDAY_NO_TZ
     err = gettimeofday(&tv);
 #else
-    err = gettimeofday(&tv, (struct timezone *)NULL);
+    //err = gettimeofday(&tv, (struct timezone *)NULL);
+    tv.tv_sec = 0;
+    tv.tv_usec = 0;
+    err = 0;
 #endif
     if (err) {
         if (raise)
@@ -729,37 +734,38 @@ pymonotonic(_PyTime_t *tp, _Py_clock_info_t *info, int raise)
 
 #else
     struct timespec ts;
+    (void)(ts);
 #ifdef CLOCK_HIGHRES
     const clockid_t clk_id = CLOCK_HIGHRES;
     const char *implementation = "clock_gettime(CLOCK_HIGHRES)";
 #else
-    const clockid_t clk_id = CLOCK_MONOTONIC;
-    const char *implementation = "clock_gettime(CLOCK_MONOTONIC)";
+    // const clockid_t clk_id = CLOCK_MONOTONIC;
+    // const char *implementation = "clock_gettime(CLOCK_MONOTONIC)";
 #endif
 
-    assert(info == NULL || raise);
+    // assert(info == NULL || raise);
 
-    if (clock_gettime(clk_id, &ts) != 0) {
-        if (raise) {
-            PyErr_SetFromErrno(PyExc_OSError);
-            return -1;
-        }
-        return -1;
-    }
+    // if (clock_gettime(clk_id, &ts) != 0) {
+    //     if (raise) {
+    //         PyErr_SetFromErrno(PyExc_OSError);
+    //         return -1;
+    //     }
+    //     return -1;
+    // }
 
-    if (info) {
-        struct timespec res;
-        info->monotonic = 1;
-        info->implementation = implementation;
-        info->adjustable = 0;
-        if (clock_getres(clk_id, &res) != 0) {
-            PyErr_SetFromErrno(PyExc_OSError);
-            return -1;
-        }
-        info->resolution = res.tv_sec + res.tv_nsec * 1e-9;
-    }
-    if (_PyTime_FromTimespec(tp, &ts, raise) < 0)
-        return -1;
+    // if (info) {
+    //     struct timespec res;
+    //     info->monotonic = 1;
+    //     info->implementation = implementation;
+    //     info->adjustable = 0;
+    //     if (clock_getres(clk_id, &res) != 0) {
+    //         PyErr_SetFromErrno(PyExc_OSError);
+    //         return -1;
+    //     }
+    //     info->resolution = res.tv_sec + res.tv_nsec * 1e-9;
+    // }
+    // if (_PyTime_FromTimespec(tp, &ts, raise) < 0)
+    //     return -1;
 #endif
     return 0;
 }
@@ -768,14 +774,15 @@ _PyTime_t
 _PyTime_GetMonotonicClock(void)
 {
     _PyTime_t t;
-    if (pymonotonic(&t, NULL, 0) < 0) {
-        /* should not happen, _PyTime_Init() checked that monotonic clock at
-           startup */
-        assert(0);
+    // if (pymonotonic(&t, NULL, 0) < 0) {
+    //     /* should not happen, _PyTime_Init() checked that monotonic clock at
+    //        startup */
+    //     assert(0);
 
-        /* use a fixed value instead of a random value from the stack */
-        t = 0;
-    }
+    //     /* use a fixed value instead of a random value from the stack */
+    //     t = 0;
+    // }
+    t = 0;
     return t;
 }
 
@@ -815,14 +822,14 @@ _PyTime_localtime(time_t t, struct tm *tm)
     }
     return 0;
 #else /* !MS_WINDOWS */
-    if (localtime_r(&t, tm) == NULL) {
-#ifdef EINVAL
-        if (errno == 0)
-            errno = EINVAL;
-#endif
-        PyErr_SetFromErrno(PyExc_OSError);
-        return -1;
-    }
+//     if (localtime_r(&t, tm) == NULL) {
+// #ifdef EINVAL
+//         if (errno == 0)
+//             errno = EINVAL;
+// #endif
+//         PyErr_SetFromErrno(PyExc_OSError);
+//         return -1;
+//     }
     return 0;
 #endif /* MS_WINDOWS */
 }
@@ -841,14 +848,14 @@ _PyTime_gmtime(time_t t, struct tm *tm)
     }
     return 0;
 #else /* !MS_WINDOWS */
-    if (gmtime_r(&t, tm) == NULL) {
-#ifdef EINVAL
-        if (errno == 0)
-            errno = EINVAL;
-#endif
-        PyErr_SetFromErrno(PyExc_OSError);
-        return -1;
-    }
+//     if (gmtime_r(&t, tm) == NULL) {
+// #ifdef EINVAL
+//         if (errno == 0)
+//             errno = EINVAL;
+// #endif
+//         PyErr_SetFromErrno(PyExc_OSError);
+//         return -1;
+//     }
     return 0;
 #endif /* MS_WINDOWS */
 }

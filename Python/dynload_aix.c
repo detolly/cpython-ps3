@@ -7,7 +7,6 @@
 #include <errno.h>      /*  for global errno      */
 #include <string.h>     /*  for strerror()        */
 #include <stdlib.h>     /*  for malloc(), free()  */
-#include <sys/ldr.h>
 
 
 #ifdef AIX_GENUINE_CPLUSPLUS
@@ -18,7 +17,7 @@
 #endif
 
 
-extern char *Py_GetProgramName(void);
+extern wchar_t *Py_GetProgramName(void);
 
 typedef struct Module {
     struct Module *next;

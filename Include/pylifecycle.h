@@ -1,6 +1,8 @@
 
 /* Interfaces to configure, query, create & destroy the Python runtime */
 
+typedef unsigned short wchar_t;
+
 #ifndef Py_PYLIFECYCLE_H
 #define Py_PYLIFECYCLE_H
 #ifdef __cplusplus

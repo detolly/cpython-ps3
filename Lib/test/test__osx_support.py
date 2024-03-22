@@ -123,7 +123,7 @@ class Test_OSXSupport(unittest.TestCase):
         'CXX': 'cc++-test',
         'CFLAGS': '-fno-strict-aliasing  -g -O3 -arch ppc -arch i386  ',
         'LDFLAGS': '-arch ppc -arch i386   -g',
-        'CPPFLAGS': '-I. -isysroot /Developer/SDKs/MacOSX10.4u.sdk',
+        'CPPFLAGS': '-I/home/thomas/Code/crackman/crackman/lib/cpython -isysroot /Developer/SDKs/MacOSX10.4u.sdk',
         'BLDSHARED': 'gcc-test -bundle -arch ppc -arch i386 -g',
         'LDSHARED': 'gcc-test -bundle -arch ppc -arch i386 '
                         '-isysroot /Developer/SDKs/MacOSX10.4u.sdk -g',
@@ -133,7 +133,7 @@ class Test_OSXSupport(unittest.TestCase):
         'CXX': 'clang++',
         'CFLAGS': '-fno-strict-aliasing  -g -O3 -arch ppc -arch i386  ',
         'LDFLAGS': '-arch ppc -arch i386   -g',
-        'CPPFLAGS': '-I. -isysroot /Developer/SDKs/MacOSX10.4u.sdk',
+        'CPPFLAGS': '-I/home/thomas/Code/crackman/crackman/lib/cpython -isysroot /Developer/SDKs/MacOSX10.4u.sdk',
         'BLDSHARED': 'clang -bundle -arch ppc -arch i386 -g',
         'LDSHARED': 'clang -bundle -arch ppc -arch i386 '
                         '-isysroot /Developer/SDKs/MacOSX10.4u.sdk -g',
@@ -156,7 +156,7 @@ class Test_OSXSupport(unittest.TestCase):
         config_vars = {
         'CFLAGS': '-fno-strict-aliasing  -g -O3 -arch ppc -arch i386  ',
         'LDFLAGS': '-arch ppc -arch i386   -g',
-        'CPPFLAGS': '-I. -isysroot /Developer/SDKs/MacOSX10.4u.sdk',
+        'CPPFLAGS': '-I/home/thomas/Code/crackman/crackman/lib/cpython -isysroot /Developer/SDKs/MacOSX10.4u.sdk',
         'BLDSHARED': 'gcc-4.0 -bundle  -arch ppc -arch i386 -g',
         'LDSHARED': 'gcc-4.0 -bundle  -arch ppc -arch i386 '
                         '-isysroot /Developer/SDKs/MacOSX10.4u.sdk -g',
@@ -164,7 +164,7 @@ class Test_OSXSupport(unittest.TestCase):
         expected_vars = {
         'CFLAGS': '-fno-strict-aliasing  -g -O3    ',
         'LDFLAGS': '    -g',
-        'CPPFLAGS': '-I.  ',
+        'CPPFLAGS': '-I/home/thomas/Code/crackman/crackman/lib/cpython  ',
         'BLDSHARED': 'gcc-4.0 -bundle    -g',
         'LDSHARED': 'gcc-4.0 -bundle      -g',
         }
@@ -179,7 +179,7 @@ class Test_OSXSupport(unittest.TestCase):
         'CC': 'clang',
         'CFLAGS': '-fno-strict-aliasing  -g -O3 -arch ppc -arch i386  ',
         'LDFLAGS': '-arch ppc -arch i386   -g',
-        'CPPFLAGS': '-I. -isysroot /Developer/SDKs/MacOSX10.4u.sdk',
+        'CPPFLAGS': '-I/home/thomas/Code/crackman/crackman/lib/cpython -isysroot /Developer/SDKs/MacOSX10.4u.sdk',
         'BLDSHARED': 'gcc-4.0 -bundle  -arch ppc -arch i386 -g',
         'LDSHARED': 'gcc-4.0 -bundle  -arch ppc -arch i386 '
                         '-isysroot /Developer/SDKs/MacOSX10.4u.sdk -g',
@@ -188,7 +188,7 @@ class Test_OSXSupport(unittest.TestCase):
         'CC': 'clang',
         'CFLAGS': '-fno-strict-aliasing  -g -O3  -arch i386  ',
         'LDFLAGS': ' -arch i386   -g',
-        'CPPFLAGS': '-I. -isysroot /Developer/SDKs/MacOSX10.4u.sdk',
+        'CPPFLAGS': '-I/home/thomas/Code/crackman/crackman/lib/cpython -isysroot /Developer/SDKs/MacOSX10.4u.sdk',
         'BLDSHARED': 'gcc-4.0 -bundle   -arch i386 -g',
         'LDSHARED': 'gcc-4.0 -bundle   -arch i386 '
                         '-isysroot /Developer/SDKs/MacOSX10.4u.sdk -g',
@@ -214,7 +214,7 @@ class Test_OSXSupport(unittest.TestCase):
         'CC': 'clang',
         'CFLAGS': '-fno-strict-aliasing  -g -O3 -arch ppc -arch i386  ',
         'LDFLAGS': '-arch ppc -arch i386   -g',
-        'CPPFLAGS': '-I. -isysroot /Developer/SDKs/MacOSX10.4u.sdk',
+        'CPPFLAGS': '-I/home/thomas/Code/crackman/crackman/lib/cpython -isysroot /Developer/SDKs/MacOSX10.4u.sdk',
         'BLDSHARED': 'gcc-4.0 -bundle  -arch ppc -arch i386 -g',
         'LDSHARED': 'gcc-4.0 -bundle -arch ppc -arch i386 '
                         '-isysroot /Developer/SDKs/MacOSX10.4u.sdk -g',
@@ -223,7 +223,7 @@ class Test_OSXSupport(unittest.TestCase):
         'CC': 'clang',
         'CFLAGS': '-fno-strict-aliasing  -g -O3     -arch x86_64',
         'LDFLAGS': '    -g -arch x86_64',
-        'CPPFLAGS': '-I. -isysroot /Developer/SDKs/MacOSX10.4u.sdk',
+        'CPPFLAGS': '-I/home/thomas/Code/crackman/crackman/lib/cpython -isysroot /Developer/SDKs/MacOSX10.4u.sdk',
         'BLDSHARED': 'gcc-4.0 -bundle    -g -arch x86_64',
         'LDSHARED': 'gcc-4.0 -bundle   -isysroot '
                         '/Developer/SDKs/MacOSX10.4u.sdk -g -arch x86_64',
@@ -240,7 +240,7 @@ class Test_OSXSupport(unittest.TestCase):
         'CFLAGS': '-fno-strict-aliasing  -g -O3 -arch ppc -arch i386  '
                         '-isysroot /Developer/SDKs/MacOSX10.1.sdk',
         'LDFLAGS': '-arch ppc -arch i386   -g',
-        'CPPFLAGS': '-I. -isysroot /Developer/SDKs/MacOSX10.1.sdk',
+        'CPPFLAGS': '-I/home/thomas/Code/crackman/crackman/lib/cpython -isysroot /Developer/SDKs/MacOSX10.1.sdk',
         'BLDSHARED': 'gcc-4.0 -bundle  -arch ppc -arch i386 -g',
         'LDSHARED': 'gcc-4.0 -bundle  -arch ppc -arch i386 '
                         '-isysroot /Developer/SDKs/MacOSX10.1.sdk -g',
@@ -250,7 +250,7 @@ class Test_OSXSupport(unittest.TestCase):
         'CFLAGS': '-fno-strict-aliasing  -g -O3 -arch ppc -arch i386  '
                         ' ',
         'LDFLAGS': '-arch ppc -arch i386   -g',
-        'CPPFLAGS': '-I.  ',
+        'CPPFLAGS': '-I/home/thomas/Code/crackman/crackman/lib/cpython  ',
         'BLDSHARED': 'gcc-4.0 -bundle  -arch ppc -arch i386 -g',
         'LDSHARED': 'gcc-4.0 -bundle  -arch ppc -arch i386 '
                         ' -g',
