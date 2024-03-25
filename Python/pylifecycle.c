@@ -53,7 +53,7 @@ extern grammar _PyParser_Grammar; /* From graminit.c */
 /* Forward */
 static void initmain(PyInterpreterState *interp);
 static int initfsencoding(PyInterpreterState *interp);
-static void initsite(void);
+// static void initsite(void);
 static int initstdio(void);
 static void initsigs(void);
 static void call_py_exitfuncs(void);
@@ -190,37 +190,43 @@ add_flag(int flag, const char *envs)
     return flag;
 }
 
-// static char*
-// get_codec_name(const char *encoding)
-// {
-//     char *name_utf8, *name_str;
-//     PyObject *codec, *name = NULL;
+static char*
+get_codec_name(const char *encoding)
+{
+    char *name_utf8, *name_str;
+    PyObject *codec, *name = NULL;
 
-//     codec = _PyCodec_Lookup(encoding);
-//     if (!codec)
-//         goto error;
+    puts("codec here");
 
-//     name = _PyObject_GetAttrId(codec, &PyId_name);
-//     Py_CLEAR(codec);
-//     if (!name)
-//         goto error;
+    codec = _PyCodec_Lookup(encoding);
+    if (!codec)
+        goto error;
 
-//     name_utf8 = PyUnicode_AsUTF8(name);
-//     if (name_utf8 == NULL)
-//         goto error;
-//     name_str = _PyMem_RawStrdup(name_utf8);
-//     Py_DECREF(name);
-//     if (name_str == NULL) {
-//         PyErr_NoMemory();
-//         return NULL;
-//     }
-//     return name_str;
+    puts("codec here 2");
 
-// error:
-//     Py_XDECREF(codec);
-//     Py_XDECREF(name);
-//     return NULL;
-// }
+    name = _PyObject_GetAttrId(codec, &PyId_name);
+    Py_CLEAR(codec);
+    if (!name)
+        goto error;
+
+    puts("codec here 3");
+
+    name_utf8 = PyUnicode_AsUTF8(name);
+    if (name_utf8 == NULL)
+        goto error;
+    name_str = _PyMem_RawStrdup(name_utf8);
+    Py_DECREF(name);
+    if (name_str == NULL) {
+        PyErr_NoMemory();
+        return NULL;
+    }
+    return name_str;
+
+error:
+    Py_XDECREF(codec);
+    Py_XDECREF(name);
+    return NULL;
+}
 
 static char*
 get_locale_encoding(void)
@@ -239,7 +245,8 @@ get_locale_encoding(void)
 #elif defined(__ANDROID__)
     return get_codec_name("UTF-8");
 #else
-    PyErr_SetNone(PyExc_NotImplementedError);
+    return get_codec_name("utf-8");
+    // PyErr_SetNone(PyExc_NotImplementedError);
     return NULL;
 #endif
 }
@@ -460,8 +467,8 @@ _Py_InitializeEx_Private(int install_sigs, int install_importlib)
         Py_XDECREF(warnings_module);
     }
 
-    if (!Py_NoSiteFlag)
-        initsite(); /* Module site */
+    // if (!Py_NoSiteFlag)
+    //     initsite(); /* Module site */
 }
 
 void
@@ -835,8 +842,8 @@ Py_NewInterpreter(void)
             Py_FatalError(
                 "Py_Initialize: can't initialize sys standard streams");
         initmain(interp);
-        if (!Py_NoSiteFlag)
-            initsite();
+        // if (!Py_NoSiteFlag)
+        //     initsite();
     }
 
     if (!PyErr_Occurred())
@@ -1022,49 +1029,30 @@ initfsencoding(PyInterpreterState *interp)
 
 /* Import the site module (not into __main__ though) */
 
-static void
-initsite(void)
-{
-    PyObject *m;
-    m = PyImport_ImportModule("site");
-    if (m == NULL) {
-        fprintf(stderr, "Failed to import the site module\n");
-        PyErr_Print();
-        Py_Finalize();
-        exit(1);
-    }
-    else {
-        Py_DECREF(m);
-    }
-}
+// static void
+// initsite(void)
+// {
+//     PyObject *m;
+//     m = PyImport_ImportModule("site");
+//     if (m == NULL) {
+//         fprintf(stderr, "Failed to import the site module\n");
+//         PyErr_Print();
+//         Py_Finalize();
+//         exit(1);
+//     }
+//     else {
+//         Py_DECREF(m);
+//     }
+// }
 
 /* Check if a file descriptor is valid or not.
    Return 0 if the file descriptor is invalid, return non-zero otherwise. */
 static int
 is_valid_fd(int fd)
 {
-#ifdef __APPLE__
-    /* bpo-30225: On macOS Tiger, when stdout is redirected to a pipe
-       and the other side of the pipe is closed, dup(1) succeed, whereas
-       fstat(1, &st) fails with EBADF. Prefer fstat() over dup() to detect
-       such error. */
-    struct stat st;
-    return (fstat(fd, &st) == 0);
-#else
-    return 1;
-    // int fd2;
-    // if (fd < 0)
-    //     return 0;
-    // _Py_BEGIN_SUPPRESS_IPH
-    // /* Prefer dup() over fstat(). fstat() can require input/output whereas
-    //    dup() doesn't, there is a low risk of EMFILE/ENFILE at Python
-    //    startup. */
-    // fd2 = dup(fd);
-    // if (fd2 >= 0)
-    //     close(fd2);
-    // _Py_END_SUPPRESS_IPH
-    // return fd2 >= 0;
-#endif
+    return 0;
+    // struct stat st;
+    // return (fstat(fd, &st) == 0);
 }
 
 /* returns Py_None if the fd is not valid */
@@ -1086,6 +1074,8 @@ create_stdio(PyObject* io,
     if (!is_valid_fd(fd))
         Py_RETURN_NONE;
 
+    puts("create_stdio here");
+
     /* stdin is always opened in buffered mode, first because it shouldn't
        make a difference in common use cases, second because TextIOWrapper
        depends on the presence of a read1() method which only exists on
@@ -1103,18 +1093,25 @@ create_stdio(PyObject* io,
                                  fd, mode, buffering,
                                  Py_None, Py_None, /* encoding, errors */
                                  Py_None, 0); /* newline, closefd */
+    
+    printf("buf is null %d\n", buf == NULL);
+
     if (buf == NULL)
         goto error;
+
+    puts("here 2");
 
     if (buffering) {
         _Py_IDENTIFIER(raw);
         raw = _PyObject_GetAttrId(buf, &PyId_raw);
         if (raw == NULL)
             goto error;
+        puts("here 3");
     }
     else {
         raw = buf;
         Py_INCREF(raw);
+        puts("here 3 else");
     }
 
 #ifdef MS_WINDOWS
@@ -1126,11 +1123,20 @@ create_stdio(PyObject* io,
     text = PyUnicode_FromString(name);
     if (text == NULL || _PyObject_SetAttrId(raw, &PyId_name, text) < 0)
         goto error;
+
+    puts("here 4");
+
     res = _PyObject_CallMethodId(raw, &PyId_isatty, NULL);
     if (res == NULL)
         goto error;
+    
+    puts("here 5");
+
     isatty = PyObject_IsTrue(res);
     Py_DECREF(res);
+
+    puts("here 6");
+    
     if (isatty == -1)
         goto error;
     if (isatty || Py_UnbufferedStdioFlag)
@@ -1159,6 +1165,8 @@ create_stdio(PyObject* io,
     if (stream == NULL)
         goto error;
 
+    puts("here 7");
+
     if (write_mode)
         mode = "w";
     else
@@ -1167,6 +1175,9 @@ create_stdio(PyObject* io,
     if (!text || _PyObject_SetAttrId(stream, &PyId_mode, text) < 0)
         goto error;
     Py_CLEAR(text);
+    
+    puts("here 8");
+    
     return stream;
 
 error:
@@ -1189,7 +1200,8 @@ error:
 static int
 initstdio(void)
 {
-    PyObject *iomod = NULL, *wrapper;
+    PyObject *iomod = NULL;
+    PyObject *wrapper;
     PyObject *bimod = NULL;
     PyObject *m;
     PyObject *std = NULL;
@@ -1208,17 +1220,21 @@ initstdio(void)
         goto error;
     }
     Py_DECREF(m);
+    puts("HERE4");
 
     if (!(bimod = PyImport_ImportModule("builtins"))) {
         goto error;
     }
+    puts("HERE5");
 
     if (!(iomod = PyImport_ImportModule("io"))) {
         goto error;
     }
+    puts("HERE6");
     if (!(wrapper = PyObject_GetAttrString(iomod, "OpenWrapper"))) {
         goto error;
     }
+    puts("HERE7");
 
     /* Set builtins.open */
     if (PyObject_SetAttrString(bimod, "open", wrapper) == -1) {
@@ -1226,15 +1242,19 @@ initstdio(void)
         goto error;
     }
     Py_DECREF(wrapper);
+    puts("here 7.5");
 
     encoding = _Py_StandardStreamEncoding;
     errors = _Py_StandardStreamErrors;
+
     if (!encoding || !errors) {
+        puts("not encoding or errors");
         pythonioencoding = Py_GETENV("PYTHONIOENCODING");
         if (pythonioencoding) {
             char *err;
             pythonioencoding = _PyMem_Strdup(pythonioencoding);
             if (pythonioencoding == NULL) {
+                printf("strdup failed %s", pythonioencoding);
                 PyErr_NoMemory();
                 goto error;
             }
@@ -1250,18 +1270,26 @@ initstdio(void)
                 encoding = pythonioencoding;
             }
         }
+        puts("yes we are here");
+        printf("so far: pythonioencoding: _%s_, errors: _%s_, isnull: %d %d\n", pythonioencoding, errors, pythonioencoding == NULL, errors == NULL);
         if (!errors && !(pythonioencoding && *pythonioencoding)) {
             /* When the LC_CTYPE locale is the POSIX locale ("C locale"),
                stdin and stdout use the surrogateescape error handler by
                default, instead of the strict error handler. */
+
             char *loc = setlocale(LC_CTYPE, NULL);
             if (loc != NULL && strcmp(loc, "C") == 0)
                 errors = "surrogateescape";
-        }
+
+            printf("thing %s\n", loc);
+        };
     }
+
+    printf("here 8 %s %s\n", encoding, errors);
 
     /* Set sys.stdin */
     fd = fileno(stdin);
+    printf("fd: %d\n", fd);
     /* Under some conditions stdin, stdout and stderr may not be connected
      * and fileno() may point to an invalid file descriptor. For example
      * GUI apps don't have valid standard streams by default.
@@ -1273,6 +1301,8 @@ initstdio(void)
     _PySys_SetObjectId(&PyId_stdin, std);
     Py_DECREF(std);
 
+    puts("here 9");
+
     /* Set sys.stdout */
     fd = fileno(stdout);
     std = create_stdio(iomod, fd, 1, "<stdout>", encoding, errors);
@@ -1281,6 +1311,8 @@ initstdio(void)
     PySys_SetObject("__stdout__", std);
     _PySys_SetObjectId(&PyId_stdout, std);
     Py_DECREF(std);
+
+    puts("here 10");
 
 #if 1 /* Disable this if you have trouble debugging bootstrap stuff */
     /* Set sys.stderr, replaces the preliminary stderr */
@@ -1605,6 +1637,7 @@ _Py_RestoreSignals(void)
 #endif
 }
 
+#include <isatty.h>
 
 /*
  * The file descriptor fd is considered ``interactive'' if either
@@ -1615,8 +1648,8 @@ _Py_RestoreSignals(void)
 int
 Py_FdIsInteractive(FILE *fp, const char *filename)
 {
-    // if (isatty((int)fileno(fp)))
-    //     return 1;
+    if (isatty((int)fileno(fp)))
+        return 1;
     if (!Py_InteractiveFlag)
         return 0;
     return (filename == NULL) ||

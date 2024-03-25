@@ -98,103 +98,109 @@ win32_urandom(unsigned char *buffer, Py_ssize_t size, int raise)
      error.
 
    getrandom() is retried if it failed with EINTR: interrupted by a signal. */
+
+#include <sys/get_random_number.h>
+
 static int
 py_getrandom(void *buffer, Py_ssize_t size, int blocking, int raise)
 {
-    /* Is getrandom() supported by the running kernel? Set to 0 if getrandom()
-       failed with ENOSYS or EPERM. Need Linux kernel 3.17 or newer, or Solaris
-       11.3 or newer */
-    static int getrandom_works = 1;
-    int flags;
-    char *dest;
-    long n;
-
-    if (!getrandom_works) {
-        return 0;
-    }
-
-    flags = blocking ? 0 : GRND_NONBLOCK;
-    dest = buffer;
-    while (0 < size) {
-#ifdef sun
-        /* Issue #26735: On Solaris, getrandom() is limited to returning up
-           to 1024 bytes. Call it multiple times if more bytes are
-           requested. */
-        n = Py_MIN(size, 1024);
-#else
-        n = Py_MIN(size, LONG_MAX);
-#endif
-
-        errno = 0;
-#ifdef HAVE_GETRANDOM
-        if (raise) {
-            Py_BEGIN_ALLOW_THREADS
-            n = getrandom(dest, n, flags);
-            Py_END_ALLOW_THREADS
-        }
-        else {
-            n = getrandom(dest, n, flags);
-        }
-#else
-        /* On Linux, use the syscall() function because the GNU libc doesn't
-           expose the Linux getrandom() syscall yet. See:
-           https://sourceware.org/bugzilla/show_bug.cgi?id=17252 */
-        // if (raise) {
-        //     Py_BEGIN_ALLOW_THREADS
-        //     n = syscall(SYS_getrandom, dest, n, flags);
-        //     Py_END_ALLOW_THREADS
-        // }
-        // else {
-        //     n = syscall(SYS_getrandom, dest, n, flags);
-        // }
-        memset(dest, 0, size);
-        n = size;
-#  ifdef _Py_MEMORY_SANITIZER
-        if (n > 0) {
-             __msan_unpoison(dest, n);
-        }
-#  endif
-#endif
-
-        if (n < 0) {
-            /* ENOSYS: the syscall is not supported by the kernel.
-               EPERM: the syscall is blocked by a security policy (ex: SECCOMP)
-               or something else. */
-            if (errno == ENOSYS || errno == EPERM) {
-                getrandom_works = 0;
-                return 0;
-            }
-
-            /* getrandom(GRND_NONBLOCK) fails with EAGAIN if the system urandom
-               is not initialiazed yet. For _PyRandom_Init(), we ignore the
-               error and fall back on reading /dev/urandom which never blocks,
-               even if the system urandom is not initialized yet:
-               see the PEP 524. */
-            if (errno == EAGAIN && !raise && !blocking) {
-                return 0;
-            }
-
-            if (errno == EINTR) {
-                if (raise) {
-                    if (PyErr_CheckSignals()) {
-                        return -1;
-                    }
-                }
-
-                /* retry getrandom() if it was interrupted by a signal */
-                continue;
-            }
-
-            if (raise) {
-                PyErr_SetFromErrno(PyExc_OSError);
-            }
-            return -1;
-        }
-
-        dest += n;
-        size -= n;
-    }
+    sys_get_random_number(buffer, size);
     return 1;
+
+//     /* Is getrandom() supported by the running kernel? Set to 0 if getrandom()
+//        failed with ENOSYS or EPERM. Need Linux kernel 3.17 or newer, or Solaris
+//        11.3 or newer */
+//     static int getrandom_works = 1;
+//     int flags;
+//     char *dest;
+//     long n;
+
+//     if (!getrandom_works) {
+//         return 0;
+//     }
+
+//     flags = blocking ? 0 : GRND_NONBLOCK;
+//     dest = buffer;
+//     while (0 < size) {
+// #ifdef sun
+//         /* Issue #26735: On Solaris, getrandom() is limited to returning up
+//            to 1024 bytes. Call it multiple times if more bytes are
+//            requested. */
+//         n = Py_MIN(size, 1024);
+// #else
+//         n = Py_MIN(size, LONG_MAX);
+// #endif
+
+//         errno = 0;
+// #ifdef HAVE_GETRANDOM
+//         if (raise) {
+//             Py_BEGIN_ALLOW_THREADS
+//             n = getrandom(dest, n, flags);
+//             Py_END_ALLOW_THREADS
+//         }
+//         else {
+//             n = getrandom(dest, n, flags);
+//         }
+// #else
+//         /* On Linux, use the syscall() function because the GNU libc doesn't
+//            expose the Linux getrandom() syscall yet. See:
+//            https://sourceware.org/bugzilla/show_bug.cgi?id=17252 */
+//         // if (raise) {
+//         //     Py_BEGIN_ALLOW_THREADS
+//         //     n = syscall(SYS_getrandom, dest, n, flags);
+//         //     Py_END_ALLOW_THREADS
+//         // }
+//         // else {
+//         //     n = syscall(SYS_getrandom, dest, n, flags);
+//         // }
+//         memset(dest, 0, size);
+//         n = size;
+// #  ifdef _Py_MEMORY_SANITIZER
+//         if (n > 0) {
+//              __msan_unpoison(dest, n);
+//         }
+// #  endif
+// #endif
+
+//         if (n < 0) {
+//             /* ENOSYS: the syscall is not supported by the kernel.
+//                EPERM: the syscall is blocked by a security policy (ex: SECCOMP)
+//                or something else. */
+//             if (errno == ENOSYS || errno == EPERM) {
+//                 getrandom_works = 0;
+//                 return 0;
+//             }
+
+//             /* getrandom(GRND_NONBLOCK) fails with EAGAIN if the system urandom
+//                is not initialiazed yet. For _PyRandom_Init(), we ignore the
+//                error and fall back on reading /dev/urandom which never blocks,
+//                even if the system urandom is not initialized yet:
+//                see the PEP 524. */
+//             if (errno == EAGAIN && !raise && !blocking) {
+//                 return 0;
+//             }
+
+//             if (errno == EINTR) {
+//                 if (raise) {
+//                     if (PyErr_CheckSignals()) {
+//                         return -1;
+//                     }
+//                 }
+
+//                 /* retry getrandom() if it was interrupted by a signal */
+//                 continue;
+//             }
+
+//             if (raise) {
+//                 PyErr_SetFromErrno(PyExc_OSError);
+//             }
+//             return -1;
+//         }
+
+//         dest += n;
+//         size -= n;
+//     }
+//     return 1;
 }
 
 #elif defined(HAVE_GETENTROPY)
@@ -304,103 +310,103 @@ static struct {
    If the file descriptor was closed or replaced, open a new file descriptor
    but don't close the old file descriptor: it probably points to something
    important for some third-party code. */
-static int
-dev_urandom(char *buffer, Py_ssize_t size, int raise)
-{
-    int fd;
-    Py_ssize_t n;
+// static int
+// dev_urandom(char *buffer, Py_ssize_t size, int raise)
+// {
+//     int fd;
+//     Py_ssize_t n;
 
-    if (raise) {
-        struct _Py_stat_struct st;
-        int fstat_result;
+//     if (raise) {
+//         struct _Py_stat_struct st;
+//         int fstat_result;
 
-        if (urandom_cache.fd >= 0) {
-            Py_BEGIN_ALLOW_THREADS
-            fstat_result = _Py_fstat_noraise(urandom_cache.fd, &st);
-            Py_END_ALLOW_THREADS
+//         if (urandom_cache.fd >= 0) {
+//             Py_BEGIN_ALLOW_THREADS
+//             fstat_result = _Py_fstat_noraise(urandom_cache.fd, &st);
+//             Py_END_ALLOW_THREADS
 
-            /* Does the fd point to the same thing as before? (issue #21207) */
-            if (fstat_result
-                || st.st_dev != urandom_cache.st_dev
-                || st.st_ino != urandom_cache.st_ino) {
-                /* Something changed: forget the cached fd (but don't close it,
-                   since it probably points to something important for some
-                   third-party code). */
-                urandom_cache.fd = -1;
-            }
-        }
-        if (urandom_cache.fd >= 0)
-            fd = urandom_cache.fd;
-        else {
-            fd = _Py_open("/dev/urandom", O_RDONLY);
-            if (fd < 0) {
-                if (errno == ENOENT || errno == ENXIO ||
-                    errno == ENODEV || errno == EACCES) {
-                    PyErr_SetString(PyExc_NotImplementedError,
-                                    "/dev/urandom (or equivalent) not found");
-                }
-                /* otherwise, keep the OSError exception raised by _Py_open() */
-                return -1;
-            }
-            if (urandom_cache.fd >= 0) {
-                /* urandom_fd was initialized by another thread while we were
-                   not holding the GIL, keep it. */
-                close(fd);
-                fd = urandom_cache.fd;
-            }
-            else {
-                if (_Py_fstat(fd, &st)) {
-                    close(fd);
-                    return -1;
-                }
-                else {
-                    urandom_cache.fd = fd;
-                    urandom_cache.st_dev = st.st_dev;
-                    urandom_cache.st_ino = st.st_ino;
-                }
-            }
-        }
+//             /* Does the fd point to the same thing as before? (issue #21207) */
+//             if (fstat_result
+//                 || st.st_dev != urandom_cache.st_dev
+//                 || st.st_ino != urandom_cache.st_ino) {
+//                 /* Something changed: forget the cached fd (but don't close it,
+//                    since it probably points to something important for some
+//                    third-party code). */
+//                 urandom_cache.fd = -1;
+//             }
+//         }
+//         if (urandom_cache.fd >= 0)
+//             fd = urandom_cache.fd;
+//         else {
+//             fd = _Py_open("/dev/urandom", O_RDONLY);
+//             if (fd < 0) {
+//                 if (errno == ENOENT || errno == ENXIO ||
+//                     errno == ENODEV || errno == EACCES) {
+//                     PyErr_SetString(PyExc_NotImplementedError,
+//                                     "/dev/urandom (or equivalent) not found");
+//                 }
+//                 /* otherwise, keep the OSError exception raised by _Py_open() */
+//                 return -1;
+//             }
+//             if (urandom_cache.fd >= 0) {
+//                 /* urandom_fd was initialized by another thread while we were
+//                    not holding the GIL, keep it. */
+//                 close(fd);
+//                 fd = urandom_cache.fd;
+//             }
+//             else {
+//                 if (_Py_fstat(fd, &st)) {
+//                     close(fd);
+//                     return -1;
+//                 }
+//                 else {
+//                     urandom_cache.fd = fd;
+//                     urandom_cache.st_dev = st.st_dev;
+//                     urandom_cache.st_ino = st.st_ino;
+//                 }
+//             }
+//         }
 
-        do {
-            n = _Py_read(fd, buffer, (size_t)size);
-            if (n == -1)
-                return -1;
-            if (n == 0) {
-                PyErr_Format(PyExc_RuntimeError,
-                        "Failed to read %zi bytes from /dev/urandom",
-                        size);
-                return -1;
-            }
+//         do {
+//             n = _Py_read(fd, buffer, (size_t)size);
+//             if (n == -1)
+//                 return -1;
+//             if (n == 0) {
+//                 PyErr_Format(PyExc_RuntimeError,
+//                         "Failed to read %zi bytes from /dev/urandom",
+//                         size);
+//                 return -1;
+//             }
 
-            buffer += n;
-            size -= n;
-        } while (0 < size);
-    }
-    else {
-        fd = _Py_open_noraise("/dev/urandom", O_RDONLY);
-        if (fd < 0) {
-            return -1;
-        }
+//             buffer += n;
+//             size -= n;
+//         } while (0 < size);
+//     }
+//     else {
+//         fd = _Py_open_noraise("/dev/urandom", O_RDONLY);
+//         if (fd < 0) {
+//             return -1;
+//         }
 
-        while (0 < size)
-        {
-            do {
-                n = read(fd, buffer, (size_t)size);
-            } while (n < 0 && errno == EINTR);
+//         while (0 < size)
+//         {
+//             do {
+//                 n = read(fd, buffer, (size_t)size);
+//             } while (n < 0 && errno == EINTR);
 
-            if (n <= 0) {
-                /* stop on error or if read(size) returned 0 */
-                close(fd);
-                return -1;
-            }
+//             if (n <= 0) {
+//                 /* stop on error or if read(size) returned 0 */
+//                 close(fd);
+//                 return -1;
+//             }
 
-            buffer += n;
-            size -= n;
-        }
-        close(fd);
-    }
-    return 0;
-}
+//             buffer += n;
+//             size -= n;
+//         }
+//         close(fd);
+//     }
+//     return 0;
+// }
 
 static void
 dev_urandom_close(void)
@@ -477,47 +483,52 @@ lcg_urandom(unsigned int x0, unsigned char *buffer, size_t size)
      a function fails with EINTR: retry directly the interrupted function
    - Don't release the GIL to call functions.
 */
+
+#include <sys/random_number.h>
+
 static int
 pyurandom(void *buffer, Py_ssize_t size, int blocking, int raise)
 {
-#if defined(PY_GETRANDOM) || defined(PY_GETENTROPY)
-    int res;
-#endif
+    sys_get_random_number(buffer, size);
+    return 0;
+// #if defined(PY_GETRANDOM) || defined(PY_GETENTROPY)
+//     int res;
+// #endif
 
-    if (size < 0) {
-        if (raise) {
-            PyErr_Format(PyExc_ValueError,
-                         "negative argument not allowed");
-        }
-        return -1;
-    }
+//     if (size < 0) {
+//         if (raise) {
+//             PyErr_Format(PyExc_ValueError,
+//                          "negative argument not allowed");
+//         }
+//         return -1;
+//     }
 
-    if (size == 0) {
-        return 0;
-    }
+//     if (size == 0) {
+//         return 0;
+//     }
 
-#ifdef MS_WINDOWS
-    return win32_urandom((unsigned char *)buffer, size, raise);
-#else
+// #ifdef MS_WINDOWS
+//     return win32_urandom((unsigned char *)buffer, size, raise);
+// #else
 
-#if defined(PY_GETRANDOM) || defined(PY_GETENTROPY)
-#ifdef PY_GETRANDOM
-    res = py_getrandom(buffer, size, blocking, raise);
-#else
-    res = py_getentropy(buffer, size, raise);
-#endif
-    if (res < 0) {
-        return -1;
-    }
-    if (res == 1) {
-        return 0;
-    }
-    /* getrandom() or getentropy() function is not available: failed with
-       ENOSYS or EPERM. Fall back on reading from /dev/urandom. */
-#endif
+// #if defined(PY_GETRANDOM) || defined(PY_GETENTROPY)
+// #ifdef PY_GETRANDOM
+//     res = py_getrandom(buffer, size, blocking, raise);
+// #else
+//     res = py_getentropy(buffer, size, raise);
+// #endif
+//     if (res < 0) {
+//         return -1;
+//     }
+//     if (res == 1) {
+//         return 0;
+//     }
+//     /* getrandom() or getentropy() function is not available: failed with
+//        ENOSYS or EPERM. Fall back on reading from /dev/urandom. */
+// #endif
 
-    return dev_urandom(buffer, size, raise);
-#endif
+//     return dev_urandom(buffer, size, raise);
+// #endif
 }
 
 /* Fill buffer with size pseudo-random bytes from the operating system random

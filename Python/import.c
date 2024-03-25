@@ -1286,7 +1286,6 @@ PyImport_ImportModuleNoBlock(const char *name)
     return PyImport_ImportModule(name);
 }
 
-
 /* Remove importlib frames from the traceback,
  * except in Verbose mode. */
 static void
@@ -1696,6 +1695,16 @@ PyImport_ReloadModule(PyObject *m)
     return reloaded_module;
 }
 
+// static void reprint(PyObject *obj) {
+//     PyObject* repr = PyObject_Repr(obj);
+//     PyObject* str = PyUnicode_AsEncodedString(repr, "utf-8", "~E~");
+//     const char *bytes = PyBytes_AS_STRING(str);
+
+//     printf("REPR: %s\n", bytes);
+
+//     Py_XDECREF(repr);
+//     Py_XDECREF(str);
+// }
 
 /* Higher-level import emulator which emulates the "import" statement
    more accurately -- it invokes the __import__() function from the

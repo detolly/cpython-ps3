@@ -14,12 +14,13 @@ CXXFLAGS="$FLAGS" \
 LDFLAGS="$LD_FLAGS" \
 CXX=ppu-lv2-cpp \
 CC=ppu-lv2-gcc \
+--prefix=/dev_hdd0/python/lib \
+--exec-prefix=/dev_hdd0/python/lib \
 --host=ppu-lv2 \
 --build=x86-64-linux \
 --with-build-python=python3.6 \
 --without-threads \
 --with-config-site
---without-pwd
 
 echo "[!] config done"
 

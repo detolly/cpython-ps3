@@ -102,14 +102,20 @@ PyObject *_PyCodec_Lookup(const char *encoding)
     PyObject *result, *args = NULL, *v;
     Py_ssize_t i, len;
 
+    puts("PYCODEC_LOOKUP here");
+
     if (encoding == NULL) {
         PyErr_BadArgument();
         goto onError;
     }
 
+    puts("PYCODEC_LOOKUP here 2");
+
     interp = PyThreadState_GET()->interp;
     if (interp->codec_search_path == NULL && _PyCodecRegistry_Init())
         goto onError;
+
+    puts("PYCODEC_LOOKUP here 3");
 
     /* Convert the encoding to a normalized Python string: all
        characters are converted to lower case, spaces and hyphens are
@@ -119,6 +125,8 @@ PyObject *_PyCodec_Lookup(const char *encoding)
         goto onError;
     PyUnicode_InternInPlace(&v);
 
+    puts("PYCODEC_LOOKUP here 4");
+
     /* First, try to lookup the name in the registry dictionary */
     result = PyDict_GetItem(interp->codec_search_cache, v);
     if (result != NULL) {
@@ -127,6 +135,7 @@ PyObject *_PyCodec_Lookup(const char *encoding)
         return result;
     }
 
+    puts("PYCODEC_LOOKUP here 5");
     /* Next, scan the search functions in order of registration */
     args = PyTuple_New(1);
     if (args == NULL) {

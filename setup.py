@@ -1921,7 +1921,7 @@ class PyBuildExt(build_ext):
 
         # XXX handle these, but how to detect?
         # *** Uncomment and edit for PIL (TkImaging) extension only:
-        #       -DWITH_PIL -I../Extensions/Imaging/libImaging  tkImaging.c \
+        #       -DWITH_PIL -I/home/thomas/Code/crackman/crackman/lib/cpython./Extensions/Imaging/libImaging  tkImaging.c \
         # *** Uncomment and edit for TOGL extension only:
         #       -DWITH_TOGL togl.c \
         # *** Uncomment these for TOGL extension only:

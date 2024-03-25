@@ -21,8 +21,8 @@
 
 # === Variables set by makesetup ===
 
-MODNAMES=        posix errno _sre _codecs _weakref _functools _operator _collections itertools atexit _signal _stat time _locale _io zipimport faulthandler _tracemalloc _symtable xxsubtype
-MODOBJS=          Modules/posixmodule.o  Modules/errnomodule.o  Modules/_sre.o  Modules/_codecsmodule.o  Modules/_weakref.o  Modules/_functoolsmodule.o  Modules/_operator.o  Modules/_collectionsmodule.o  Modules/itertoolsmodule.o  Modules/atexitmodule.o Modules/_stat.o  Modules/timemodule.o  Modules/_localemodule.o  Modules/_iomodule.o Modules/iobase.o Modules/fileio.o Modules/bytesio.o Modules/bufferedio.o Modules/textio.o Modules/stringio.o  Modules/zipimport.o  Modules/faulthandler.o  Modules/_tracemalloc.o Modules/hashtable.o  Modules/symtablemodule.o  Modules/xxsubtype.o
+MODNAMES=        posix errno pwd _sre _codecs _weakref _functools _operator _collections itertools atexit _signal _stat time _locale _io zipimport faulthandler _tracemalloc _symtable xxsubtype
+MODOBJS=          Modules/posixmodule.o  Modules/errnomodule.o  Modules/pwdmodule.o  Modules/_sre.o  Modules/_codecsmodule.o  Modules/_weakref.o  Modules/_functoolsmodule.o  Modules/_operator.o  Modules/_collectionsmodule.o  Modules/itertoolsmodule.o  Modules/atexitmodule.o  Modules/signalmodule.o  Modules/_stat.o  Modules/timemodule.o  Modules/_localemodule.o  Modules/_iomodule.o Modules/iobase.o Modules/fileio.o Modules/bytesio.o Modules/bufferedio.o Modules/textio.o Modules/stringio.o  Modules/zipimport.o  Modules/faulthandler.o  Modules/_tracemalloc.o Modules/hashtable.o  Modules/symtablemodule.o  Modules/xxsubtype.o
 MODLIBS=        $(LOCALMODLIBS) $(BASEMODLIBS)
 
 # === Variables set by configure
@@ -80,7 +80,7 @@ MAKESETUP=      $(srcdir)/Modules/makesetup
 OPT=		-DNDEBUG -g -fwrapv -O3 -Wall
 BASECFLAGS=	 -fno-strict-aliasing -Wno-unused-result -Wsign-compare
 BASECPPFLAGS=	
-CONFIGURE_CFLAGS=	-I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -m64 -nostdlibinc
+CONFIGURE_CFLAGS=	-I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror
 # CFLAGS_NODIST is used for building the interpreter and stdlib C extensions.
 # Use it when a compiler flag should _not_ be part of the distutils CFLAGS
 # once Python is installed (Issue #21121).
@@ -99,7 +99,7 @@ PY_CFLAGS_NODIST=$(CONFIGURE_CFLAGS_NODIST) $(CFLAGS_NODIST)
 # Both CPPFLAGS and LDFLAGS need to contain the shell's value for setup.py to
 # be able to build extension modules using the directories specified in the
 # environment variables
-PY_CPPFLAGS=	$(BASECPPFLAGS) -I. -I$(srcdir)/Include $(CONFIGURE_CPPFLAGS) $(CPPFLAGS)
+PY_CPPFLAGS=	$(BASECPPFLAGS) -I/home/thomas/Code/crackman/crackman/lib/cpython -I$(srcdir)/Include $(CONFIGURE_CPPFLAGS) $(CPPFLAGS)
 PY_LDFLAGS=	$(CONFIGURE_LDFLAGS) $(LDFLAGS)
 PY_LDFLAGS_NODIST=$(CONFIGURE_LDFLAGS_NODIST) $(LDFLAGS_NODIST)
 NO_AS_NEEDED=	-Wl,--no-as-needed
@@ -126,10 +126,10 @@ MULTIARCH=
 MULTIARCH_CPPFLAGS = 
 
 # Install prefix for architecture-independent files
-prefix=		/usr/local
+prefix=		/dev_hdd0/python/lib
 
 # Install prefix for architecture-dependent files
-exec_prefix=	${prefix}
+exec_prefix=	/dev_hdd0/python/lib
 
 # Install prefix for data files
 datarootdir=    ${prefix}/share
@@ -195,7 +195,7 @@ EXEMODE=	755
 FILEMODE=	644
 
 # configure script arguments
-CONFIG_ARGS=	 'CFLAGS=-I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -m64 -nostdlibinc' 'CXXFLAGS=-I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -m64 -nostdlibinc' 'LDFLAGS=' 'CXX=ppu-lv2-cpp' 'CC=ppu-lv2-gcc' '--host=ppu-lv2' '--build=x86-64-linux' '--with-build-python=python3.6' '--without-threads' '--with-config-site' 'build_alias=x86-64-linux' 'host_alias=ppu-lv2'
+CONFIG_ARGS=	 'CFLAGS=-I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror' 'CXXFLAGS=-I/usr/local/cell/target/ppu/include -I/usr/local/cell/target/ppu/../common/include -L/usr/local/cell/target/ppu/lib --sysroot /usr/local/cell/target/ppu -mcpu=cell -nostdlibinc -Werror' 'LDFLAGS=' 'CXX=ppu-lv2-cpp' 'CC=ppu-lv2-gcc' '--prefix=/dev_hdd0/python/lib' '--exec-prefix=/dev_hdd0/python/lib' '--host=ppu-lv2' '--build=x86-64-linux' '--with-build-python=python3.6' '--without-threads' '--with-config-site' 'build_alias=x86-64-linux' 'host_alias=ppu-lv2'
 
 
 # Subdirectories with code
@@ -231,7 +231,7 @@ DLINCLDIR=	.
 DYNLOADFILE=	dynload_stub.o
 MACHDEP_OBJS=	
 LIBOBJDIR=	Python/
-LIBOBJS=	 ${LIBOBJDIR}dup2$U.o
+LIBOBJS=	 ${LIBOBJDIR}dup2$U.o ${LIBOBJDIR}strdup$U.o
 
 PYTHON=		python$(EXE)
 BUILDPYTHON=	python$(BUILDEXE)

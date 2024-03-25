@@ -455,15 +455,40 @@ search_for_exec_prefix(wchar_t *argv0_path, wchar_t *home,
     return 0;
 }
 
+/*
+
+static wchar_t prefix[MAXPATHLEN+1];
+static wchar_t exec_prefix[MAXPATHLEN+1];
+static wchar_t progpath[MAXPATHLEN+1];
+static wchar_t *module_search_path = NULL;
+
+*/
+
+#include <wchar.h>
+
+
 static void
 calculate_path(void)
 {
+    // static const wchar_t* PATHgarbage = L"/dev_hdd0/python";
+    // static const wchar_t* LIB_PATH = L"/dev_hdd0/python/lib";
+    // static const wchar_t* CWD = L"/dev_hdd0/python/run";
+
+    // printf("asd greetings");
+
+    // wprintf(PATHgarbage);
+    // wcsncpy(prefix, PATHgarbage, wcslen(PATHgarbage));
+    // wcsncpy(exec_prefix, LIB_PATH, wcslen(LIB_PATH));
+    // wcsncpy(progpath, CWD, wcslen(CWD));
+    // module_search_path = L"/dev/hdd0/python/lib";
+
+    // printf("%x %x", module_search_path, &);
     extern wchar_t *Py_GetProgramName(void);
 
     static const wchar_t delimiter[2] = {DELIM, '\0'};
     static const wchar_t separator[2] = {SEP, '\0'};
-    char *_rtpypath = Py_GETENV("PYTHONPATH"); /* XXX use wide version on Windows */
-    wchar_t *rtpypath = NULL;
+    char *_rtpypath = "/dev_hdd0/python/lib";//Py_GETENV("PYTHONPATH"); /* XXX use wide version on Windows */
+    wchar_t *rtpypath = L"/dev_hdd0/python/lib";
     wchar_t *home = Py_GetPythonHome();
     char *_path = Py_GETENV("PATH");
     wchar_t *path_buffer = NULL;
