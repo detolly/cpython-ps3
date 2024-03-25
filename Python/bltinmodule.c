@@ -1753,13 +1753,15 @@ builtin_pow_impl(PyObject *module, PyObject *x, PyObject *y, PyObject *z)
 static PyObject *
 builtin_print(PyObject *self, PyObject *args, PyObject *kwds)
 {
+
     static char *kwlist[] = {"sep", "end", "file", "flush", 0};
     static PyObject *dummy_args;
     PyObject *sep = NULL, *end = NULL, *file = NULL, *flush = NULL;
     int i, err;
 
-    if (dummy_args == NULL && !(dummy_args = PyTuple_New(0)))
+    if (dummy_args == NULL && !(dummy_args = PyTuple_New(0))) {
         return NULL;
+    }
     if (!PyArg_ParseTupleAndKeywords(dummy_args, kwds, "|OOOO:print",
                                      kwlist, &sep, &end, &file, &flush))
         return NULL;
@@ -1771,7 +1773,7 @@ builtin_print(PyObject *self, PyObject *args, PyObject *kwds)
         }
 
         /* sys.stdout may be None when FILE* stdout isn't connected */
-        if (file == Py_None)
+        if (file == Py_None) // this is true for some reason
             Py_RETURN_NONE;
     }
 
@@ -1784,6 +1786,7 @@ builtin_print(PyObject *self, PyObject *args, PyObject *kwds)
                      sep->ob_type->tp_name);
         return NULL;
     }
+    
     if (end == Py_None) {
         end = NULL;
     }
@@ -1830,6 +1833,8 @@ builtin_print(PyObject *self, PyObject *args, PyObject *kwds)
                 Py_DECREF(tmp);
         }
     }
+
+    puts("end print string");
 
     Py_RETURN_NONE;
 }

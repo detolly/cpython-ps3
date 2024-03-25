@@ -1050,9 +1050,11 @@ initfsencoding(PyInterpreterState *interp)
 static int
 is_valid_fd(int fd)
 {
-    return 0;
-    // struct stat st;
-    // return (fstat(fd, &st) == 0);
+    if (fd == 0 || fd == 1 || fd == 2)
+        return 1;
+
+    struct stat st;
+    return (fstat(fd, &st) == 0);
 }
 
 /* returns Py_None if the fd is not valid */
@@ -1071,10 +1073,10 @@ create_stdio(PyObject* io,
     _Py_IDENTIFIER(TextIOWrapper);
     _Py_IDENTIFIER(mode);
 
+    printf("create_stdio %d\n", fd);
+
     if (!is_valid_fd(fd))
         Py_RETURN_NONE;
-
-    puts("create_stdio here");
 
     /* stdin is always opened in buffered mode, first because it shouldn't
        make a difference in common use cases, second because TextIOWrapper
@@ -1093,13 +1095,12 @@ create_stdio(PyObject* io,
                                  fd, mode, buffering,
                                  Py_None, Py_None, /* encoding, errors */
                                  Py_None, 0); /* newline, closefd */
-    
-    printf("buf is null %d\n", buf == NULL);
 
     if (buf == NULL)
         goto error;
 
     puts("here 2");
+
 
     if (buffering) {
         _Py_IDENTIFIER(raw);
@@ -1124,18 +1125,12 @@ create_stdio(PyObject* io,
     if (text == NULL || _PyObject_SetAttrId(raw, &PyId_name, text) < 0)
         goto error;
 
-    puts("here 4");
-
     res = _PyObject_CallMethodId(raw, &PyId_isatty, NULL);
     if (res == NULL)
         goto error;
-    
-    puts("here 5");
 
     isatty = PyObject_IsTrue(res);
     Py_DECREF(res);
-
-    puts("here 6");
     
     if (isatty == -1)
         goto error;
@@ -1165,8 +1160,6 @@ create_stdio(PyObject* io,
     if (stream == NULL)
         goto error;
 
-    puts("here 7");
-
     if (write_mode)
         mode = "w";
     else
@@ -1175,8 +1168,6 @@ create_stdio(PyObject* io,
     if (!text || _PyObject_SetAttrId(stream, &PyId_mode, text) < 0)
         goto error;
     Py_CLEAR(text);
-    
-    puts("here 8");
     
     return stream;
 
@@ -1206,7 +1197,7 @@ initstdio(void)
     PyObject *m;
     PyObject *std = NULL;
     int status = 0, fd;
-    PyObject * encoding_attr;
+    // PyObject * encoding_attr;
     char *pythonioencoding = NULL, *encoding, *errors;
 
     /* Hack to avoid a nasty recursion issue when Python is invoked
@@ -1220,21 +1211,17 @@ initstdio(void)
         goto error;
     }
     Py_DECREF(m);
-    puts("HERE4");
 
     if (!(bimod = PyImport_ImportModule("builtins"))) {
         goto error;
     }
-    puts("HERE5");
 
     if (!(iomod = PyImport_ImportModule("io"))) {
         goto error;
     }
-    puts("HERE6");
     if (!(wrapper = PyObject_GetAttrString(iomod, "OpenWrapper"))) {
         goto error;
     }
-    puts("HERE7");
 
     /* Set builtins.open */
     if (PyObject_SetAttrString(bimod, "open", wrapper) == -1) {
@@ -1242,7 +1229,6 @@ initstdio(void)
         goto error;
     }
     Py_DECREF(wrapper);
-    puts("here 7.5");
 
     encoding = _Py_StandardStreamEncoding;
     errors = _Py_StandardStreamErrors;
@@ -1270,8 +1256,6 @@ initstdio(void)
                 encoding = pythonioencoding;
             }
         }
-        puts("yes we are here");
-        printf("so far: pythonioencoding: _%s_, errors: _%s_, isnull: %d %d\n", pythonioencoding, errors, pythonioencoding == NULL, errors == NULL);
         if (!errors && !(pythonioencoding && *pythonioencoding)) {
             /* When the LC_CTYPE locale is the POSIX locale ("C locale"),
                stdin and stdout use the surrogateescape error handler by
@@ -1280,12 +1264,8 @@ initstdio(void)
             char *loc = setlocale(LC_CTYPE, NULL);
             if (loc != NULL && strcmp(loc, "C") == 0)
                 errors = "surrogateescape";
-
-            printf("thing %s\n", loc);
         };
     }
-
-    printf("here 8 %s %s\n", encoding, errors);
 
     /* Set sys.stdin */
     fd = fileno(stdin);
@@ -1301,8 +1281,6 @@ initstdio(void)
     _PySys_SetObjectId(&PyId_stdin, std);
     Py_DECREF(std);
 
-    puts("here 9");
-
     /* Set sys.stdout */
     fd = fileno(stdout);
     std = create_stdio(iomod, fd, 1, "<stdout>", encoding, errors);
@@ -1312,9 +1290,7 @@ initstdio(void)
     _PySys_SetObjectId(&PyId_stdout, std);
     Py_DECREF(std);
 
-    puts("here 10");
-
-#if 1 /* Disable this if you have trouble debugging bootstrap stuff */
+#if 0 /* Disable this if you have trouble debugging bootstrap stuff */
     /* Set sys.stderr, replaces the preliminary stderr */
     fd = fileno(stderr);
     std = create_stdio(iomod, fd, 1, "<stderr>", encoding, "backslashreplace");

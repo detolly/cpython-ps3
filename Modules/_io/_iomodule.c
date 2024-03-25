@@ -236,6 +236,8 @@ _io_open_impl(PyObject *module, PyObject *file, const char *mode,
 {
     unsigned i;
 
+    puts("IO OPEN");
+
     int creating = 0, reading = 0, writing = 0, appending = 0, updating = 0;
     int text = 0, binary = 0, universal = 0;
 
@@ -258,9 +260,12 @@ _io_open_impl(PyObject *module, PyObject *file, const char *mode,
     } else {
         path_or_fd = PyOS_FSPath(file);
         if (path_or_fd == NULL) {
+            puts("path_or_fd == null");
             return NULL;
         }
     }
+
+    puts("io open here 1");
 
     if (!is_number &&
         !PyUnicode_Check(path_or_fd) &&
@@ -268,6 +273,8 @@ _io_open_impl(PyObject *module, PyObject *file, const char *mode,
         PyErr_Format(PyExc_TypeError, "invalid file: %R", file);
         goto error;
     }
+
+    puts("io open here 2");
 
     /* Decode mode */
     for (i = 0; i < strlen(mode); i++) {
@@ -363,6 +370,7 @@ _io_open_impl(PyObject *module, PyObject *file, const char *mode,
         goto error;
     }
 
+    puts("io open here 3");
     /* Create the Raw file stream */
     {
         PyObject *RawIO_class = (PyObject *)&PyFileIO_Type;
@@ -372,6 +380,7 @@ _io_open_impl(PyObject *module, PyObject *file, const char *mode,
             encoding = "utf-8";
         }
 #endif
+        puts("before call");
         raw = PyObject_CallFunction(RawIO_class,
                                     "OsiO", path_or_fd, rawmode, closefd, opener);
     }
@@ -380,6 +389,7 @@ _io_open_impl(PyObject *module, PyObject *file, const char *mode,
         goto error;
     result = raw;
 
+    puts("io open here 3.5");
     Py_DECREF(path_or_fd);
     path_or_fd = NULL;
 
@@ -387,6 +397,7 @@ _io_open_impl(PyObject *module, PyObject *file, const char *mode,
     if (modeobj == NULL)
         goto error;
 
+    puts("io open here 4");
     /* buffering */
     {
         PyObject *res = _PyObject_CallMethodId(raw, &PyId_isatty, NULL);
@@ -398,6 +409,7 @@ _io_open_impl(PyObject *module, PyObject *file, const char *mode,
             goto error;
     }
 
+    puts("io open here 5");
     if (buffering == 1 || (buffering < 0 && isatty)) {
         buffering = -1;
         line_buffering = 1;
@@ -415,12 +427,14 @@ _io_open_impl(PyObject *module, PyObject *file, const char *mode,
         if (buffering == -1 && PyErr_Occurred())
             goto error;
     }
+    puts("io open here 6");
     if (buffering < 0) {
         PyErr_SetString(PyExc_ValueError,
                         "invalid buffering size");
         goto error;
     }
 
+    puts("io open here 7");
     /* if not buffering, returns the raw file object */
     if (buffering == 0) {
         if (!binary) {

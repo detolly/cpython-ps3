@@ -186,6 +186,7 @@ fileio_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
     assert(type != NULL && type->tp_alloc != NULL);
 
     self = (fileio *) type->tp_alloc(type, 0);
+
     if (self != NULL) {
         self->fd = -1;
         self->created = 0;
@@ -232,6 +233,8 @@ _io_FileIO___init___impl(fileio *self, PyObject *nameobj, const char *mode,
                          int closefd, PyObject *opener)
 /*[clinic end generated code: output=23413f68e6484bbd input=193164e293d6c097]*/
 {
+    puts("here in _io_FileIO___init___impl");
+
 #ifdef MS_WINDOWS
     Py_UNICODE *widename = NULL;
 #else
@@ -348,6 +351,8 @@ _io_FileIO___init___impl(fileio *self, PyObject *nameobj, const char *mode,
         }
     }
 
+    puts("fileio_impl here 2");
+
     if (!rwa)
         goto bad_mode;
 
@@ -371,8 +376,10 @@ _io_FileIO___init___impl(fileio *self, PyObject *nameobj, const char *mode,
     if (fd >= 0) {
         self->fd = fd;
         self->closefd = closefd;
+        puts("fileio_impl here 3 yes");
     }
     else {
+        puts("fileio_impl here 3 no");
         self->closefd = 1;
         if (!closefd) {
             PyErr_SetString(PyExc_ValueError,
@@ -380,6 +387,7 @@ _io_FileIO___init___impl(fileio *self, PyObject *nameobj, const char *mode,
             goto error;
         }
 
+        puts("fileio_impl here 4");
         errno = 0;
         if (opener == Py_None) {
             do {
@@ -439,9 +447,14 @@ _io_FileIO___init___impl(fileio *self, PyObject *nameobj, const char *mode,
 #endif
     }
 
+    puts("fileio_impl here 5");
     self->blksize = DEFAULT_BUFFER_SIZE;
     Py_BEGIN_ALLOW_THREADS
-    fstat_result = _Py_fstat_noraise(self->fd, &fdfstat);
+    if (!isatty(self->fd)) {
+        fstat_result = _Py_fstat_noraise(self->fd, &fdfstat);
+    } else {
+        fstat_result = 0;
+    }
     Py_END_ALLOW_THREADS
     if (fstat_result < 0) {
         /* Tolerate fstat() errors other than EBADF.  See Issue #25717, where
@@ -451,6 +464,7 @@ _io_FileIO___init___impl(fileio *self, PyObject *nameobj, const char *mode,
         if (GetLastError() == ERROR_INVALID_HANDLE) {
             PyErr_SetFromWindowsErr(0);
 #else
+        puts("fileio_impl here 5.5");
         if (errno == EBADF) {
             PyErr_SetFromErrno(PyExc_OSError);
 #endif
@@ -474,6 +488,7 @@ _io_FileIO___init___impl(fileio *self, PyObject *nameobj, const char *mode,
 #endif /* HAVE_STRUCT_STAT_ST_BLKSIZE */
     }
 
+    puts("fileio_impl here 6");
 #if defined(MS_WINDOWS) || defined(__CYGWIN__)
     /* don't translate newlines (\r\n <=> \n) */
     _setmode(self->fd, O_BINARY);
