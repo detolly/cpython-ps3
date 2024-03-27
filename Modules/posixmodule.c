@@ -3294,6 +3294,7 @@ os_lchown_impl(PyObject *module, path_t *path, uid_t uid, gid_t gid)
 }
 #endif /* HAVE_LCHOWN */
 
+#include <getcwd.h>
 
 static PyObject *
 posix_getcwd(int use_bytes)
@@ -3358,7 +3359,7 @@ posix_getcwd(int use_bytes)
 #ifdef MS_WINDOWS
         cwd = getcwd(buf, (int)buflen);
 #else
-        // cwd = getcwd(buf, buflen);
+        cwd = getcwd(buf, buflen);
         cwd = NULL;
 #endif
     } while (cwd == NULL && errno == ERANGE);

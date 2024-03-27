@@ -1501,10 +1501,7 @@ _Py_wrealpath(const wchar_t *path,
 }
 #endif
 
-char *getcwd(char* fname, size_t len)
-{
-    return NULL;
-}
+#include <getcwd.h>
 
 /* Get the current directory. size is the buffer size in wide characters
    including the null character. Decode the path from the locale encoding.

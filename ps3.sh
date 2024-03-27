@@ -11,7 +11,6 @@ FLAGS="-I$CELLPPU/include -I$CELLPPU/../common/include -L$CELLPPU/lib --sysroot 
 CONFIG_SITE=config.site ./configure \
 CFLAGS="$FLAGS" \
 CXXFLAGS="$FLAGS" \
-LDFLAGS="$LD_FLAGS" \
 CXX=ppu-lv2-cpp \
 CC=ppu-lv2-gcc \
 --prefix=/dev_hdd0/python/lib \
@@ -21,6 +20,8 @@ CC=ppu-lv2-gcc \
 --with-build-python=python3.6 \
 --without-threads \
 --with-config-site
+--without-libc \
+--without-libm
 
 echo "[!] config done"
 
